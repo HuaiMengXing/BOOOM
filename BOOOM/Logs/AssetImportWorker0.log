@@ -284,3 +284,27 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 12364.570563 seconds.
+  path: Assets/Scenes/GameScene.unity.orig
+  artifactKey: Guid(2cbebf21a856c1b45858443e69621f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/GameScene.unity.orig using Guid(2cbebf21a856c1b45858443e69621f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98735a8730e082244a6aadb08b1bee73') in 0.184288 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 46.216616 seconds.
+  path: Assets/Scripts/Data/Pool.cs
+  artifactKey: Guid(f9cd934aabc35204fa3700dc70c77ce8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Data/Pool.cs using Guid(f9cd934aabc35204fa3700dc70c77ce8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91196dafd4f832e156adb8267e6cfd4c') in 0.001779 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.330308 seconds.
+  path: Assets/Scripts/Game
+  artifactKey: Guid(9f7edbdb5e008c74ab64557232da062e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Game using Guid(9f7edbdb5e008c74ab64557232da062e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2e619a01daf6b39910e6d640f714df4') in 0.001715 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.820571 seconds.
+  path: Assets/Scripts/Data
+  artifactKey: Guid(b54cb5591f972a94dbc44e9cde9adfde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Data using Guid(b54cb5591f972a94dbc44e9cde9adfde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f0cc50b9664b7198593a091668cf6ce') in 0.001679 seconds 
