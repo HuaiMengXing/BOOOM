@@ -35,3 +35,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+*.log
+BOOOM/Logs/shadercompiler-AssetImportWorker0.log
+BOOOM/UserSettings/Layouts/default-2021.dwlt
+BOOOM/UserSettings/Layouts/default-2021.dwlt
