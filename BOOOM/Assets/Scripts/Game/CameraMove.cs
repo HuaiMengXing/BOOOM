@@ -8,8 +8,13 @@ public class CameraMove : MonoBehaviour
     public Vector3 offsetPos;
     public float lookBodyHight;
     public float moveSpeed;
-    public float offsetRight;
     public float rotationSpeed;
+    [Header("震动时间和幅度")]
+    public float shakeDuration = 0.5f;
+    public float shakeAmount = 0.1f;
+
+    private bool shaking = false;
+    private Vector3 originalPos;
 
     [HideInInspector]
     public bool playerDeath = false;
@@ -31,9 +36,31 @@ public class CameraMove : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position,targetPos, moveSpeed * Time.deltaTime);
 
         //获取看向某个点的四元数
-        targetRot = Quaternion.LookRotation(target.transform.right * offsetRight + target.transform.position + Vector3.up * lookBodyHight - transform.position);
+        targetRot = Quaternion.LookRotation(target.transform.position + Vector3.up * lookBodyHight - transform.position);
         //插值运算向目标位置靠拢
         transform.rotation = Quaternion.Lerp(transform.rotation,targetRot, rotationSpeed * Time.deltaTime);
 
+    }
+
+    public void Shake()
+    {
+        StartCoroutine(ShakeCamera());
+    }
+    IEnumerator ShakeCamera()
+    {
+        if (shaking == false)
+        {
+            shaking = true;  // 标记为正在震动
+            float elapsed = 0.0f;
+
+            // 在指定的时间内执行震动效果
+            while (elapsed < shakeDuration)
+            {
+                transform.localPosition = transform.localPosition + Random.insideUnitSphere * shakeAmount;  // 让相机的位置随机变化一定的幅度
+                elapsed += Time.deltaTime;  // 算出时间已经过了多少
+                yield return null;
+            }
+            shaking = false;  // 标记为停止震动
+        }
     }
 }
