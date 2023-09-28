@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.ImageEffects;
 
 public class CameraMove : MonoBehaviour
 {
+    public InteractionPanel Interaction;
     public GameObject target;
     public Vector3 offsetPos;
     public float lookBodyHight;
@@ -20,6 +22,8 @@ public class CameraMove : MonoBehaviour
     public bool playerDeath = false;
     private Vector3 targetPos;
     private Quaternion targetRot;
+    private RaycastHit hitInfo;
+    private InteractionObj interactionObj;
 
     void Update()
     {
@@ -40,6 +44,28 @@ public class CameraMove : MonoBehaviour
         //插值运算向目标位置靠拢
         transform.rotation = Quaternion.Lerp(transform.rotation,targetRot, rotationSpeed * Time.deltaTime);
 
+        //交互
+        if(Physics.Raycast(transform.position, transform.forward,out hitInfo, 3f))
+        {           
+            if(hitInfo.transform.tag == "Interaction")
+            {
+                if (!Interaction.isShow)
+                {
+                    interactionObj = hitInfo.transform.GetComponent<InteractionObj>();
+                    Interaction.textUpdate(interactionObj.txt);
+                    Interaction.Show();
+                }
+                if (Input.GetKeyDown(KeyCode.E) && Interaction.isShow)
+                {
+                    //交互处理
+                    interactionObj.interactionEvent();
+                    Interaction.Hide();
+                }
+            }else if(Interaction.isShow)
+                Interaction.Hide();
+        }else if (Interaction.isShow)
+            Interaction.Hide();
+
     }
 
     public void Shake()
@@ -52,15 +78,21 @@ public class CameraMove : MonoBehaviour
         {
             shaking = true;  // 标记为正在震动
             float elapsed = 0.0f;
+            float Dir = 1;
 
             // 在指定的时间内执行震动效果
             while (elapsed < shakeDuration)
             {
+                if (elapsed > shakeDuration / 2.0f)
+                    Dir = -1;
+
+                GetComponent<VignetteAndChromaticAberration>().chromaticAberration += Time.deltaTime * Dir * 160;
                 transform.localPosition = transform.localPosition + Random.insideUnitSphere * shakeAmount;  // 让相机的位置随机变化一定的幅度
                 elapsed += Time.deltaTime;  // 算出时间已经过了多少
                 yield return null;
             }
             shaking = false;  // 标记为停止震动
+            GetComponent<VignetteAndChromaticAberration>().chromaticAberration = 0.2f;
         }
     }
 }
