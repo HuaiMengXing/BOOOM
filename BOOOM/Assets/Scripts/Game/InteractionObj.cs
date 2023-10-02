@@ -15,6 +15,7 @@ public class InteractionObj : MonoBehaviour
     public string txt;
     public float doorSpeed = 10;
 
+    private Outline outline = null;
     private bool door;
     private bool doorIsOpen;
     private Quaternion doorQuaternion;
@@ -22,6 +23,9 @@ public class InteractionObj : MonoBehaviour
     void Start()
     {
         doorQuaternion = Quaternion.FromToRotation(transform.right, transform.forward);
+        outline = gameObject.GetComponent<Outline>();
+        if (outline != null)
+            outline.enabled = false;
     }
     void Update()
     {
@@ -52,6 +56,17 @@ public class InteractionObj : MonoBehaviour
             }
                 
         }
+    }
+
+    public void outlineOpen()
+    {
+        if (outline != null)
+            outline.enabled = true;
+    }
+    public void outlineClose()
+    {
+        if (outline != null)
+            outline.enabled = false;
     }
 
     public void interactionEvent()
