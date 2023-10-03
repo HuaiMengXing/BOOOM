@@ -7,22 +7,30 @@ using UnityEngine.UI;
 
 public class W_StartUIEvents : MonoBehaviour
 {
-    public Button enterBtn, leaveBtn;
+    public Button startBtn, exitBtn, continueBtn;
     public Text bestTimeInfo;
 
 
     public void Start()
     {
-        
+
     }
 
-    public void OnEnterBtnClicked()
+    public void OnStartBtnClicked()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadSceneAsync(1);
+    }
+    public void OnContinueBtnClicked()
     {
         SceneManager.LoadSceneAsync(1);
     }
-    public void OnLeaveBtnClicked()
+    public void OnExitBtnClicked()
     {
-        
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
+        Application.Quit();
+    #endif
     }
-   
 }
