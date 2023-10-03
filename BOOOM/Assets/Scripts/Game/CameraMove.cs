@@ -45,7 +45,7 @@ public class CameraMove : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation,targetRot, rotationSpeed * Time.deltaTime);
 
         //交互
-        if(Physics.Raycast(transform.position, transform.forward,out hitInfo, 3f))
+        if(Physics.Raycast(transform.position, transform.forward,out hitInfo, 3f,~(1<<LayerMask.NameToLayer("Player"))))
         {           
             if(hitInfo.transform.tag == "Interaction")
             {
@@ -54,6 +54,7 @@ public class CameraMove : MonoBehaviour
                     interactionObj = hitInfo.transform.GetComponent<InteractionObj>();
                     Interaction.textUpdate(interactionObj.txt);
                     Interaction.Show();
+                    interactionObj.outlineOpen();
                 }
                 if (Input.GetKeyDown(KeyCode.E) && Interaction.isShow)
                 {
@@ -64,7 +65,11 @@ public class CameraMove : MonoBehaviour
             }else if(Interaction.isShow)
                 Interaction.Hide();
         }else if (Interaction.isShow)
+        {
             Interaction.Hide();
+            interactionObj.outlineClose();
+        }
+           
 
     }
 
