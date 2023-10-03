@@ -87,11 +87,11 @@ public class W_Diary : MonoBehaviour
 
 
     //==== for test ====
-    public void OnGUI()
-    {
-        if (GUILayout.Button("开启日记") == true)
-        {
-            Show();
-        }
-    }
+    //public void OnGUI()
+    //{
+    //    if (GUILayout.Button("开启日记") == true)
+    //    {
+    //        Show();
+    //    }
+    //}
 }
