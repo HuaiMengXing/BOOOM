@@ -34,7 +34,7 @@ public class W_Diary : MonoBehaviour
     }
     public void Update()
     {
-        if(Input.GetMouseButtonDown(2)) 
+        if(Input.GetMouseButtonDown(1)) 
         {
             Hide();
         }
