@@ -7,17 +7,34 @@ public class Player : MonoBehaviour
     private static Player instance;
     public static Player Instance => instance;
 
-    public float moveSpeed;
+    [Header("移动速度")]
+    public float walkMoveSpeed;
+    public float runMoveSpeed;
+    public float crouchMoveSpeed;
+    [Space]
+    [Header("力")]
     public float CrouchSpeed;
     public float JumpSpeed;
     public float gravity;
+    [Space]
+    [Header("旋转速度")]
     public float X_rotationSpeed;
     public float Y_rotationSpeed;
 
-    private CameraMove _camera;
+    [HideInInspector]
+    public bool changeRooms;
+    [HideInInspector]
+    public bool hideing = false;
+    [HideInInspector]
+    public Vector3 hidePlayerPos;
+    [HideInInspector]
+    public CameraMove _camera;
     private CharacterController _characterController;
 
-    private Vector3 move;
+    [HideInInspector]
+    public float moveSpeed;
+    [HideInInspector]
+    public Vector3 move;
     private float lookHight;
     private bool isOnGround;
     private Vector3 velocity;
@@ -28,6 +45,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
+        moveSpeed = walkMoveSpeed;
         _camera = Camera.main.GetComponent<CameraMove>();
         _characterController = GetComponent<CharacterController>();
         lookHight = _camera.lookBodyHight;
@@ -40,9 +58,12 @@ public class Player : MonoBehaviour
         if (Time.timeScale == 0)
             return;
 
-        Move();
+        if (!changeRooms && !hideing)
+            Move();
         rotationLook();
-        CrouchAndJump();
+
+        if (!hideing)
+            CrouchAndJump();
 
         if (Input.GetKeyDown(KeyCode.F))
             _camera.Shake();
@@ -51,6 +72,11 @@ public class Player : MonoBehaviour
     //移动
     public void Move()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+            moveSpeed = runMoveSpeed;
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+            moveSpeed = walkMoveSpeed;
+
         move.z = Input.GetAxis("Vertical");
         move.x = Input.GetAxis("Horizontal");
         move.y = 0;
@@ -72,18 +98,25 @@ public class Player : MonoBehaviour
             if (_camera.offsetPos.y > -0.3f)
                 _camera.offsetPos.y -= Time.deltaTime * CrouchSpeed;
             if(_camera.offsetPos.y <= -0.3f)
+            {
                 _camera.offsetPos.y = -0.3f;
+                moveSpeed = crouchMoveSpeed;
+            }
+                
         }          
         else if (_camera.offsetPos.y < 1 && isOnGround)
         {
             _camera.offsetPos.y += Time.deltaTime * CrouchSpeed;
             if(_camera.offsetPos.y >= 1)
+            {
                 _camera.offsetPos.y = 1;
+                moveSpeed = walkMoveSpeed;
+            }
+                
         }
 
         if (_camera.offsetPos.y >= 1 && Input.GetButtonDown("Jump") && isOnGround)
         {
-            print("sssss" + isOnGround);
             velocity.y = JumpSpeed;
             isOnGround = false;
         }

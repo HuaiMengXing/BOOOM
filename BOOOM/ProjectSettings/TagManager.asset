@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interaction
+  - Door
+  - Task
+  - Monster
+  - Task1
   layers:
   - Default
   - TransparentFX
