@@ -12,6 +12,7 @@ public class W_UISizeEffect : MonoBehaviour
 
     private float x = 0f;
     private bool isPlaying = false;
+
     private Vector3 targetScale = Vector3.one;
     private Vector3 startScale = Vector3.one;
 
