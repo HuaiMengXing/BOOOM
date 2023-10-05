@@ -7,16 +7,19 @@ using UnityEngine;
 /// </summary>
 public class W_LightFlash : MonoBehaviour
 {
+    [Range(0.0f, 1.0f)]
+    public float posibility = 0.4f;
+    public float len = 1f;
+
     public AnimationCurve curve;                                    //控制灯光变化的曲线
-                                                                    
+
     public Light light => this.GetComponentInChildren<Light>();     //获取物体的Light组件
 
-    public float duration = 1f;                                     //灯光闪烁一次的时间
-
-    [Range(0f,1000f)]
+    public float speed = 1f;
+    [Range(0f, 1000f)]
     public float minGapTime = 5f;                                   //闪烁的最小间隔时间
 
-    [Range(0f,1000f)]
+    [Range(0f, 1000f)]
     public float maxGapTime = 3f;                                   //闪烁的最大间隔时间
 
     private float startIntensity = 10f;                             //Light的起使亮度
@@ -25,29 +28,34 @@ public class W_LightFlash : MonoBehaviour
 
     public void Start()
     {
-        if (minGapTime < duration) minGapTime = duration;           //对非法数值进行处理(可能需要优化)
+        if (minGapTime < len) minGapTime = len;           //对非法数值进行处理(可能需要优化)
         if (maxGapTime < minGapTime) maxGapTime = minGapTime;
         startIntensity = light.intensity;
-        StartCoroutine(Flash());                                    
+        StartCoroutine(Flash());
     }
 
     IEnumerator<WaitForSeconds> ChangeIntensty()        //改变灯光亮度
     {
-        while (x <= 1)
+        x = Random.Range(0, 1);
+        float endx = x + len;
+        while (x <= endx)
         {
-            x += Time.deltaTime / duration;
+            x += Time.deltaTime * speed;
             light.intensity = curve.Evaluate(x) * startIntensity;
             yield return new WaitForSeconds(Time.deltaTime);
         }
+        light.intensity = startIntensity;
         x = 0f;
     }
 
-    IEnumerator<WaitForSeconds> Flash()                 //灯光闪烁
+    IEnumerator<WaitForSeconds> Flash()                     //灯光闪烁
     {
-        while (true)                            
+        while (true)
         {
-            StartCoroutine(ChangeIntensty());           //一直执行改变亮度的函数
-            yield return new WaitForSeconds(Random.Range(minGapTime, maxGapTime));      //每次的间隔时间
+            if (Random.Range(0, 1000) < 1000 * posibility)
+                StartCoroutine(ChangeIntensty());           //一直执行改变亮度的函数
+
+            yield return new WaitForSeconds(Random.Range(len + minGapTime, len + maxGapTime));      //每次的间隔时间
         }
     }
 }

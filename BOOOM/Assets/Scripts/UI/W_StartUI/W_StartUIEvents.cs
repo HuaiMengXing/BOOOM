@@ -7,14 +7,13 @@ using UnityEngine.UI;
 
 public class W_StartUIEvents : MonoBehaviour
 {
-    public Button startBtn, exitBtn, continueBtn;
-    public Text bestTimeInfo;
-
+    public Text bestRecord;
 
     public void Start()
     {
-
+        
     }
+
 
     public void OnStartBtnClicked()
     {

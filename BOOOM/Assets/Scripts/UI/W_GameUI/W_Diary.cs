@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ using UnityEngine.UI;
 /// </summary>
 public class W_Diary : MonoBehaviour
 {
+    [Multiline(5)]
     public string content;
     public Sprite background;
 
@@ -34,9 +36,13 @@ public class W_Diary : MonoBehaviour
     }
     public void Update()
     {
-        if(isOpen==true && Input.GetKeyDown(KeyCode.E)) 
+        if (isOpen == true && Input.GetKeyDown(KeyCode.Escape))
         {
             Hide();
+        }
+        else if (isOpen == false && Input.GetKeyDown(KeyCode.E))
+        {
+            Show();
         }
     }
     public void Show()
@@ -44,11 +50,17 @@ public class W_Diary : MonoBehaviour
         if (isOpen == true) return;
         targetText.text = content;
         targetImage.sprite = background;
+
+        
+
         StartCoroutine(PlayEffect());
     }
     public void Hide() 
     {
         if (isOpen == false) return;
+
+
+
         StartCoroutine(PlayEffect());
     }
     private IEnumerator<WaitForSeconds> PlayEffect()
@@ -60,12 +72,10 @@ public class W_Diary : MonoBehaviour
             while (rate <= 1)
             {
                 targetCanvasGroup.alpha = rate;
-                targetText.rectTransform.localScale = new Vector3(rate, rate, 1);
                 targetImage.rectTransform.localScale = new Vector3(rate, rate, 1);
-                rate += effectSpeed * Time.deltaTime;
-                yield return new WaitForSeconds(Time.deltaTime);
+                rate += effectSpeed * 0.02f;
+                yield return new WaitForSeconds(0.02f);
             }
-            targetText.rectTransform.localScale = new Vector3(1, 1, 1);
             targetImage.rectTransform.localScale = new Vector3(1, 1, 1);
             targetCanvasGroup.alpha = 1;
             isOpen = true;
@@ -75,12 +85,10 @@ public class W_Diary : MonoBehaviour
             while(rate>=0)
             {
                 targetCanvasGroup.alpha = rate;
-                targetText.rectTransform.localScale = new Vector3(rate, rate, 1);
                 targetImage.rectTransform.localScale = new Vector3(rate, rate, 1);
                 rate -= effectSpeed * Time.deltaTime;
                 yield return new WaitForSeconds(Time.deltaTime);
             }
-            targetText.rectTransform.localScale = new Vector3(0, 0, 1);
             targetImage.rectTransform.localScale = new Vector3(0, 0, 1);
             targetCanvasGroup.alpha = 0;
             isOpen = false;
@@ -93,7 +101,7 @@ public class W_Diary : MonoBehaviour
     //==== for test ====
     public void OnGUI()
     {
-        if (GUILayout.Button("开启日记") == true)
+        if (GUILayout.Button("---===开启日记===---") == true)
         {
             Show();
         }
