@@ -27,14 +27,14 @@ public class W_Diary : MonoBehaviour
 
     public void Awake()
     {
-        targetText = targetCanvas.GetComponentInChildren<Text>();
         targetImage = targetCanvas.GetComponentInChildren<Image>();
+        targetText = targetImage.GetComponentInChildren<Text>();
         targetCanvasGroup = targetCanvas.GetComponent<CanvasGroup>();
         targetCanvasGroup.alpha = 0;
     }
     public void Update()
     {
-        if(isOpen==true && Input.GetKeyDown(KeyCode.Escape)) 
+        if(isOpen==true && Input.GetKeyDown(KeyCode.E)) 
         {
             Hide();
         }
@@ -91,11 +91,11 @@ public class W_Diary : MonoBehaviour
 
 
     //==== for test ====
-    //public void OnGUI()
-    //{
-    //    if (GUILayout.Button("开启日记") == true)
-    //    {
-    //        Show();
-    //    }
-    //}
+    public void OnGUI()
+    {
+        if (GUILayout.Button("开启日记") == true)
+        {
+            Show();
+        }
+    }
 }
