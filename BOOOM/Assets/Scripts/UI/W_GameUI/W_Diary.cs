@@ -34,7 +34,7 @@ public class W_Diary : MonoBehaviour
     }
     public void Update()
     {
-        if(Input.GetMouseButtonDown(1)) 
+        if(isOpen==true && Input.GetKeyDown(KeyCode.Escape)) 
         {
             Hide();
         }
@@ -57,7 +57,7 @@ public class W_Diary : MonoBehaviour
         if (isOpen == false && targetCanvasGroup.alpha == 0)  //开启动画
         {
             targetCanvas.enabled = true;
-            while (rate < 1)
+            while (rate <= 1)
             {
                 targetCanvasGroup.alpha = rate;
                 targetText.rectTransform.localScale = new Vector3(rate, rate, 1);
@@ -65,12 +65,14 @@ public class W_Diary : MonoBehaviour
                 rate += effectSpeed * Time.deltaTime;
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+            targetText.rectTransform.localScale = new Vector3(1, 1, 1);
+            targetImage.rectTransform.localScale = new Vector3(1, 1, 1);
             targetCanvasGroup.alpha = 1;
             isOpen = true;
         }
         else if (isOpen == true && targetCanvasGroup.alpha == 1)                 //关闭动画
         {
-            while(rate>0)
+            while(rate>=0)
             {
                 targetCanvasGroup.alpha = rate;
                 targetText.rectTransform.localScale = new Vector3(rate, rate, 1);
@@ -78,6 +80,8 @@ public class W_Diary : MonoBehaviour
                 rate -= effectSpeed * Time.deltaTime;
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+            targetText.rectTransform.localScale = new Vector3(0, 0, 1);
+            targetImage.rectTransform.localScale = new Vector3(0, 0, 1);
             targetCanvasGroup.alpha = 0;
             isOpen = false;
             targetCanvas.enabled = false;
