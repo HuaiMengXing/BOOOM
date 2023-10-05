@@ -14,9 +14,15 @@ public class CameraMove : MonoBehaviour
     [Header("震动时间和幅度")]
     public float shakeDuration = 0.5f;
     public float shakeAmount = 0.1f;
+    [Header("浮动速度和幅度")]
+    [Space]
+    public float floatSpeed = 1.0f;
+    public float floatAmount = 0.1f;
+    [Header("手电筒")]
+    public GameObject flashLight;
+
 
     private bool shaking = false;
-    private Vector3 originalPos;
 
     [HideInInspector]
     public bool playerDeath = false;
@@ -24,53 +30,46 @@ public class CameraMove : MonoBehaviour
     private Quaternion targetRot;
     private RaycastHit hitInfo;
     private InteractionObj interactionObj;
+    private TaskMgr taskMgr;
+    private float offsetPos_Y;
+    private Player player;
+    private float posY;
+    private float time;
+    private void Start()
+    {
+        offsetPos_Y = offsetPos.y;
+        player = Player.Instance;
+        posY = 0;
+    }
 
     void Update()
     {
         if (target == null || Time.timeScale == 0)
             return;
 
+        if (player != null && player.move != Vector3.zero)
+            FloatHead();
+
         //z方向的偏移
         targetPos = target.transform.position + target.transform.forward * offsetPos.z;
         //y方向的偏移
-        targetPos += Vector3.up * offsetPos.y;
+        targetPos += Vector3.up * (offsetPos.y + posY);
         //x方向的偏移
         targetPos += target.transform.right * offsetPos.x;
         //插值运算 到达指定位置
-        transform.position = Vector3.Lerp(transform.position,targetPos, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPos, moveSpeed * Time.deltaTime);
 
         //获取看向某个点的四元数
-        targetRot = Quaternion.LookRotation(target.transform.position + Vector3.up * lookBodyHight - transform.position);
+        targetRot = Quaternion.LookRotation(target.transform.position + Vector3.up * posY + Vector3.up * lookBodyHight + Vector3.up * (offsetPos.y - offsetPos_Y) - transform.position);
         //插值运算向目标位置靠拢
         transform.rotation = Quaternion.Lerp(transform.rotation,targetRot, rotationSpeed * Time.deltaTime);
 
         //交互
-        if(Physics.Raycast(transform.position, transform.forward,out hitInfo, 3f,~(1<<LayerMask.NameToLayer("Player"))))
-        {           
-            if(hitInfo.transform.tag == "Interaction")
-            {
-                if (!Interaction.isShow)
-                {
-                    interactionObj = hitInfo.transform.GetComponent<InteractionObj>();
-                    Interaction.textUpdate(interactionObj.txt);
-                    Interaction.Show();
-                    interactionObj.outlineOpen();
-                }
-                if (Input.GetKeyDown(KeyCode.E) && Interaction.isShow)
-                {
-                    //交互处理
-                    interactionObj.interactionEvent();
-                    Interaction.Hide();
-                }
-            }else if(Interaction.isShow)
-                Interaction.Hide();
-        }else if (Interaction.isShow)
-        {
-            Interaction.Hide();
-            interactionObj.outlineClose();
-        }
-           
+        InteractionEvent();
 
+        //手电筒
+        if(Input.GetMouseButtonDown(1))
+            flashLight.SetActive(!flashLight.activeInHierarchy);
     }
 
     public void Shake()
@@ -98,6 +97,64 @@ public class CameraMove : MonoBehaviour
             }
             shaking = false;  // 标记为停止震动
             GetComponent<VignetteAndChromaticAberration>().chromaticAberration = 0.2f;
+        }
+    }
+
+    public void FloatHead()
+    {
+        float errorFloat = player.moveSpeed / player.walkMoveSpeed;
+        time += Time.deltaTime;
+        if (errorFloat > 1)
+            errorFloat = 1.3f;
+        else if (errorFloat < 1)
+            errorFloat = 0.6f;
+        else
+            errorFloat = 1;
+
+        posY = Mathf.Sin(time * floatSpeed * errorFloat) * (floatAmount * errorFloat);
+    }
+
+    public void InteractionEvent()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 3f, ~(1 << LayerMask.NameToLayer("Player"))))
+        {
+            if (LayerMask.LayerToName(hitInfo.transform.gameObject.layer) == "Interaction")
+            {
+                if (!Interaction.isShow)
+                {
+                    interactionObj = hitInfo.transform.GetComponent<InteractionObj>();
+                    Interaction.textUpdate(interactionObj.txt);
+                    Interaction.Show();
+                    interactionObj.outlineOpen();
+                }
+                if (Input.GetKeyDown(KeyCode.E) && Interaction.isShow)
+                {
+                    //交互处理
+                    interactionObj.interactionEvent();
+                    Interaction.Hide();
+                }
+            }else if(hitInfo.transform.tag == "Task" && !DialogSystem.Instance.gameObject.activeInHierarchy)
+            {
+                if (!Interaction.isShow)
+                {
+                    taskMgr = hitInfo.transform.GetComponent<TaskMgr>();
+                    Interaction.textUpdate("任务"+ ((taskMgr.index+2)/2));
+                    Interaction.Show();
+                }
+                if (Input.GetKeyDown(KeyCode.E) && Interaction.isShow)
+                {
+                    //交互处理
+                    taskMgr.InteractionEvent();
+                    Interaction.Hide();
+                }
+            }
+            else if (Interaction.isShow)
+                Interaction.Hide();
+        }
+        else if (Interaction.isShow)
+        {
+            Interaction.Hide();
+            interactionObj.outlineClose();
         }
     }
 }

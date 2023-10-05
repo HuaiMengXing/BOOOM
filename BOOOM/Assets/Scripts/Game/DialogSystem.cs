@@ -15,8 +15,12 @@ public class DialogSystem : MonoBehaviour
     [Header("聊天内容出现间隔时间")]
     public float textSpeed = 0.1f;
 
+    [Header("聊天内容出完等待时间")]
+    public float waitTime = 3f;
+
     private int index;
     private bool textFinish = false;
+    private float time;
 
     private List<string> textList = new List<string>();
     Coroutine Co;
@@ -34,8 +38,12 @@ public class DialogSystem : MonoBehaviour
 
     void Update()
     {
-        if((Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(0)) && index != textList.Count)
+        if(textFinish)
+            time += Time.deltaTime;
+
+        if((Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(0) || time > waitTime) && index != textList.Count)
         {
+            time = 0;
             if (textFinish)
                 Co = StartCoroutine(SetTextUI());
             else
@@ -48,6 +56,10 @@ public class DialogSystem : MonoBehaviour
         }
         if(index == textList.Count) //聊天结束
         {
+            time = 0;
+            if ((TaskMgr.Instance.index+1)%2 != 0)//显示任务
+                TaskMgr.Instance.ShowTaskObjs();
+
             this.gameObject.SetActive(false);           
             return;
         }

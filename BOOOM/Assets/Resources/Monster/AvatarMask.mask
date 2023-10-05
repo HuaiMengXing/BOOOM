@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AvatarMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/FeetIK
+    m_Weight: 1
+  - m_Path: Armature/Hand1IK
+    m_Weight: 1
+  - m_Path: Armature/Hand2IK
+    m_Weight: 1
+  - m_Path: Armature/Hand3IK
+    m_Weight: 1
+  - m_Path: Armature/Hand4IK
+    m_Weight: 1
+  - m_Path: Armature/Root
+    m_Weight: 1
+  - m_Path: Armature/Root/BodyRoot
+    m_Weight: 1
+  - m_Path: Armature/Root/BodyRoot/Eyes1
+    m_Weight: 1
+  - m_Path: Armature/Root/BodyRoot/Eyes2
+    m_Weight: 1
+  - m_Path: Armature/Root/BodyRoot/Hand1
+    m_Weight: 1
+  - m_Path: Armature/Root/BodyRoot/Hand1/Hand1-1
+    m_Weight: 1
+  - m_Path: Armature/Root/BodyRoot/Hand2
+    m_Weight: 1
+  - m_Path: Armature/Root/BodyRoot/Hand2/Hand2-1
+    m_Weight: 1
+  - m_Path: Armature/Root/BodyRoot/Hand3
+    m_Weight: 1
+  - m_Path: Armature/Root/BodyRoot/Hand3/Hand3-1
+    m_Weight: 1
+  - m_Path: Armature/Root/BodyRoot/Hand4
+    m_Weight: 1
+  - m_Path: Armature/Root/BodyRoot/Hand4/Hand4-1
+    m_Weight: 1
+  - m_Path: Armature/Root/BodyRoot/Head
+    m_Weight: 1
+  - m_Path: Armature/Root/LowerBody
+    m_Weight: 1
+  - m_Path: Armature/Root/LowerBody/Feet1
+    m_Weight: 1
+  - m_Path: Armature/Root/LowerBody/Feet1/Feet2
+    m_Weight: 1
+  - m_Path: Armature/Root/Tongue1
+    m_Weight: 1
+  - m_Path: Armature/Root/Tongue1/Tongue2
+    m_Weight: 1
+  - m_Path: Armature/TongueIK
+    m_Weight: 1
+  - m_Path: Maid
+    m_Weight: 1
