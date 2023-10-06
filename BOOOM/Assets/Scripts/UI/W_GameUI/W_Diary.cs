@@ -19,7 +19,7 @@ public class W_Diary : MonoBehaviour
 
     [Range(0f,1000f)]
     [Header("特效播放速度")]
-    public float effectSpeed = 2f;
+    public float effectSpeed = 8f;
 
     private bool isOpen = false;        //true：日记打开了
 
@@ -32,7 +32,6 @@ public class W_Diary : MonoBehaviour
         targetImage = targetCanvas.GetComponentInChildren<Image>();
         targetText = targetImage.GetComponentInChildren<Text>();
         targetCanvasGroup = targetCanvas.GetComponent<CanvasGroup>();
-        targetCanvasGroup.alpha = 0;
     }
     public void Update()
     {
@@ -40,27 +39,17 @@ public class W_Diary : MonoBehaviour
         {
             Hide();
         }
-        else if (isOpen == false && Input.GetKeyDown(KeyCode.E))
-        {
-            Show();
-        }
     }
     public void Show()
     {
         if (isOpen == true) return;
         targetText.text = content;
         targetImage.sprite = background;
-
-        
-
         StartCoroutine(PlayEffect());
     }
     public void Hide() 
     {
         if (isOpen == false) return;
-
-
-
         StartCoroutine(PlayEffect());
     }
     private IEnumerator<WaitForSeconds> PlayEffect()
@@ -80,7 +69,7 @@ public class W_Diary : MonoBehaviour
             targetCanvasGroup.alpha = 1;
             isOpen = true;
         }
-        else if (isOpen == true && targetCanvasGroup.alpha == 1)                 //关闭动画
+        else if (isOpen == true && targetCanvasGroup.alpha == 1)//关闭动画
         {
             while(rate>=0)
             {
@@ -99,11 +88,11 @@ public class W_Diary : MonoBehaviour
 
 
     //==== for test ====
-    public void OnGUI()
-    {
-        if (GUILayout.Button("---===开启日记===---") == true)
-        {
-            Show();
-        }
-    }
+    //public void OnGUI()
+    //{
+    //    if (GUILayout.Button("---===开启日记===---") == true)
+    //    {
+    //        Show();
+    //    }
+    //}
 }
