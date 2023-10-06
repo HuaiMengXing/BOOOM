@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b44441454de2c0489d0895ff4dcbd61
+guid: 81540f37dbba5034bb27488ac28055ef
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Smiley Sans
+  - Times New Yorker
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
