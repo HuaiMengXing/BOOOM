@@ -24,8 +24,7 @@ public class SceneMgr : MonoBehaviour
     private List<int> rooms = new List<int>();
     private int roomListNumber;
     private float timeIndex;
-    private float time;
-    public List<float> changeHight = new List<float>();
+    private float time;   
 
     private GameData gameData;
 
@@ -93,7 +92,7 @@ public class SceneMgr : MonoBehaviour
     IEnumerator ChangeRoom(int ListIndex)
     {
         int index = 0;
-
+        List<float> changeHight = new List<float>();
         //重新赋值高度
         changeHight.Clear();
         for (int i = 0; i < hight.Length; i++)
@@ -104,7 +103,8 @@ public class SceneMgr : MonoBehaviour
             case 1:
                 for (int i = 0; i < rooms_1.Length; i++)
                 {
-                    rooms_1[i].GetComponent<SetFather>().door.CloseDoor();//子物体门如没有关，则关闭                    
+                    rooms_1[i].GetComponent<SetFather>().door[0].CloseDoor();//子物体门如没有关，则关闭
+                    rooms_1[i].GetComponent<SetFather>().door[1].CloseDoor();//子物体门如没有关，则关闭                                                                //
                 }
                 yield return new WaitForSeconds(closeTime);//等待门关了
                 for (int i = 0; i < rooms_1.Length; i++)
@@ -131,7 +131,8 @@ public class SceneMgr : MonoBehaviour
             case 2:
                 for (int i = 0; i < rooms_2.Length; i++)
                 {
-                    rooms_2[i].GetComponent<SetFather>().door.CloseDoor();//子物体门如没有关，则关闭                    
+                    rooms_2[i].GetComponent<SetFather>().door[0].CloseDoor();//子物体门如没有关，则关闭
+                    rooms_2[i].GetComponent<SetFather>().door[1].CloseDoor();//子物体门如没有关，则关闭                     
                 }
                 yield return new WaitForSeconds(closeTime);//等待门关了
                 for (int i = 0; i < rooms_2.Length; i++)
@@ -158,7 +159,8 @@ public class SceneMgr : MonoBehaviour
             case 3:
                 for (int i = 0; i < rooms_3.Length; i++)
                 {
-                    rooms_3[i].GetComponent<SetFather>().door.CloseDoor();//子物体门如没有关，则关闭                   
+                    rooms_3[i].GetComponent<SetFather>().door[0].CloseDoor();//子物体门如没有关，则关闭
+                    rooms_3[i].GetComponent<SetFather>().door[1].CloseDoor();//子物体门如没有关，则关闭                    
                 }
                 yield return new WaitForSeconds(closeTime);//等待门关了
                 for (int i = 0; i < rooms_3.Length; i++)
@@ -185,7 +187,8 @@ public class SceneMgr : MonoBehaviour
             case 4:
                 for (int i = 0; i < rooms_4.Length; i++)
                 {
-                    rooms_4[i].GetComponent<SetFather>().door.CloseDoor();//子物体门如没有关，则关闭                   
+                    rooms_4[i].GetComponent<SetFather>().door[0].CloseDoor();//子物体门如没有关，则关闭
+                    rooms_4[i].GetComponent<SetFather>().door[1].CloseDoor();//子物体门如没有关，则关闭                  
                 }
                 yield return new WaitForSeconds(closeTime);//等待门关了
                 for (int i = 0; i < rooms_4.Length; i++)

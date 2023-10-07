@@ -20,6 +20,8 @@ public class CameraMove : MonoBehaviour
     public float floatAmount = 0.1f;
     [Header("手电筒")]
     public GameObject flashLight;
+    [Header("角色死亡")]
+    public GameObject deathEvent;
 
 
     private bool shaking = false;
@@ -46,6 +48,17 @@ public class CameraMove : MonoBehaviour
     {
         if (target == null || Time.timeScale == 0)
             return;
+        if(player.death)
+        {
+            if (transform.parent != deathEvent.transform)
+            {
+                transform.SetParent(deathEvent.transform, false);
+                transform.localPosition = Vector3.zero;
+                transform.localRotation = Quaternion.identity;
+            }        
+            return;
+        }
+
 
         if (player != null && player.move != Vector3.zero)
             FloatHead();
@@ -103,20 +116,20 @@ public class CameraMove : MonoBehaviour
     public void FloatHead()
     {
         float errorFloat = player.moveSpeed / player.walkMoveSpeed;
-        time += Time.deltaTime;
-        if (errorFloat > 1)
-            errorFloat = 1.3f;
-        else if (errorFloat < 1)
+       
+        if (errorFloat > 1.32)
+            errorFloat = 1.32f;
+        else if (errorFloat < 0.6)
             errorFloat = 0.6f;
-        else
-            errorFloat = 1;
 
-        posY = Mathf.Sin(time * floatSpeed * errorFloat) * (floatAmount * errorFloat);
+        time += Time.deltaTime * floatSpeed * errorFloat;
+
+        posY = Mathf.Sin(time) * (floatAmount * errorFloat);
     }
 
     public void InteractionEvent()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 3f, ~(1 << LayerMask.NameToLayer("Player"))))
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 5f, ~(1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("NO"))))
         {
             if (LayerMask.LayerToName(hitInfo.transform.gameObject.layer) == "Interaction")
             {
