@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SetFather : MonoBehaviour
 {
-    public InteractionObj door;
+    public InteractionObj[] door;
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player" && other.transform.parent == null)

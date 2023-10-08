@@ -19,6 +19,10 @@ public class TaskMgr : MonoBehaviour
     [Space]
     [Header("每个任务物品对应的标签，对应任务数量")]
     public string[] taskTag;
+
+    [Space]
+    [Header("非任务物品数量，对应任务数")]
+    public int[] noTaskObj;
     //获取场上所有任务物品
     private Dictionary<int, GameObject[]> keyValuePairs = new Dictionary<int, GameObject[]>();
     //每个任务的物品以及对应的号码
@@ -57,7 +61,7 @@ public class TaskMgr : MonoBehaviour
             //读出任务进度
             index = gameData.taskIndex;
 
-            if (index % 2 != 0)//没接任务
+            if (index % 2 != 0)//是否接了任务
             {
                 //获取当前任务的物品
                 if (keyValuePairs.ContainsKey(index / 2))
@@ -71,9 +75,12 @@ public class TaskMgr : MonoBehaviour
                     objects[i].SetActive(true);
                     for (int j = 0; j < gameData.taskList.Count; j++)
                     {
-                        //不存在数据保留中，说明没有获取到的
+                        //存在数据保留中，说明获取到了
                         if (gameData.taskList[j] == i)
                         {
+                            if (objects[i].GetComponent<InteractionObj>().text != null)
+                                noTaskObj[index / 2]--;//非任务物品
+
                             taskList.Add(i);
                             objects[i].SetActive(false);
                             continue;
@@ -93,6 +100,9 @@ public class TaskMgr : MonoBehaviour
         if (keyValuePairs.ContainsKey(index / 2))
         {
             //清空之前的任务的物品
+            for (int i = 0; i < objects.Count; i++)
+                objects[i].SetActive(false);
+
             objects.Clear();
             taskList.Clear();
 
@@ -111,7 +121,7 @@ public class TaskMgr : MonoBehaviour
     {
         if((index+1)%2 == 0)
         {
-            if (taskList.Count == keyValuePairs[index/2].Length)//任务完成
+            if (taskList.Count + noTaskObj[index / 2] == keyValuePairs[index/2].Length)//任务完成
                 index++;
         }
 

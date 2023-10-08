@@ -57,10 +57,15 @@ public class DialogSystem : MonoBehaviour
         if(index == textList.Count) //聊天结束
         {
             time = 0;
-            if ((TaskMgr.Instance.index+1)%2 != 0)//显示任务
+            if ((TaskMgr.Instance.index+1)%2 != 0 && TaskMgr.Instance.index != TaskMgr.Instance.texts.Length - 1)//显示任务
                 TaskMgr.Instance.ShowTaskObjs();
 
-            this.gameObject.SetActive(false);           
+            if (TaskMgr.Instance.index != TaskMgr.Instance.texts.Length - 1)//任务结束
+            {
+                //游戏结束
+            }
+
+                this.gameObject.SetActive(false);           
             return;
         }
     }
