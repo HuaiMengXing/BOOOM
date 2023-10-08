@@ -133,9 +133,9 @@ public class CameraMove : MonoBehaviour
         {
             if (LayerMask.LayerToName(hitInfo.transform.gameObject.layer) == "Interaction")
             {
+                interactionObj = hitInfo.transform.GetComponent<InteractionObj>();
                 if (!Interaction.isShow)
-                {
-                    interactionObj = hitInfo.transform.GetComponent<InteractionObj>();
+                {                   
                     Interaction.textUpdate(interactionObj.txt);
                     Interaction.Show();
                     interactionObj.outlineOpen();

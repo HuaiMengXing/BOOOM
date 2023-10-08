@@ -7,14 +7,20 @@ public class Monster : MonoBehaviour
 {
     private static Monster instance;
     public static Monster Instance => instance;
-
+    [Header("移动时间")]
     public float walkSpeed = 3f;
     public float runSpeed = 5.5f;
-
+    [Header("巡逻时间")]
     public float walkStopTime = 15f;
     public float idleTime = 4f;
-
+    [Header("音效文件")]
+    public AudioClip patorlSound;
+    public AudioClip findPlayerSound;
+    public AudioClip eatPlayerSound;
+    [Header("巡逻地点集")]
     public Transform[] patorlPos;
+
+    private AudioSource _audio;
     private Animator animator;
     private NavMeshAgent agent;
     private Player player;
@@ -22,6 +28,7 @@ public class Monster : MonoBehaviour
     private float walkTime;
     private RaycastHit hit;
     private RaycastHit hitdoor;
+    private float disPlayerMonster;
     private void Awake()
     {
         instance = this;
@@ -31,6 +38,13 @@ public class Monster : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        _audio = GetComponent<AudioSource>();
+        if(patorlSound != null)
+        {
+            _audio.clip = patorlSound;
+            _audio.Play();
+        }
+            
         player = Player.Instance;
         agent.SetDestination(patorlPos[Random.Range(0,patorlPos.Length)].position);//开局随机巡逻一个位置
         walkTime = 0;
@@ -38,7 +52,7 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
-        if(Physics.SphereCast(new Ray(transform.position + transform.forward * 7, transform.forward), 3f, out hitdoor, 2f,1<<LayerMask.NameToLayer("Interaction")))
+        if(Physics.SphereCast(new Ray(transform.position + transform.forward * 7, transform.forward), 3f, out hitdoor, 1.5f,1<<LayerMask.NameToLayer("Interaction")))
         {
             if (hitdoor.transform.tag == "Interaction")//开门
             {
@@ -51,33 +65,30 @@ public class Monster : MonoBehaviour
 
         if(!findPlayer)
         {
-            if(Mathf.Abs(Player.Instance.transform.position.y - transform.position.y) < 5f)//说明在同一层，开始检测玩家
+            if(!player.hideing && Mathf.Abs(Player.Instance.transform.position.y - transform.position.y) < 5f)//说明在同一层，开始检测玩家,并且没有藏起来
             {
-                if (Vector3.Distance(player.transform.position, transform.position) < 6f ||
-                (Vector3.Distance(player.transform.position, transform.position) < 11f && !Physics.Raycast(transform.position, player.transform.position - transform.position, 10f)))//靠近，或者在前方
+                disPlayerMonster = Vector3.Distance(player.transform.position, transform.position);
+                if (disPlayerMonster < 6f || (disPlayerMonster < 11f && !Physics.Raycast(transform.position, player.transform.position - transform.position, 10f))
+                    || (disPlayerMonster < 23f && !Physics.Raycast(transform.position, player.transform.position - transform.position, 21f) &&
+                    Vector3.Angle(player.transform.position - transform.position, transform.forward) < 30f))//靠近，或者在前方
                 {
                     agent.isStopped = false;
                     findPlayer = true;
                     animator.SetBool("FindPlayer", true);
                     animator.SetBool("Idle", false);
                     agent.speed = runSpeed;
-                }
-                else if (Physics.SphereCast(new Ray(transform.position, transform.forward), 2.5f, out hit, 22f, ~( 1 << LayerMask.NameToLayer("NO"))))//对上了
-                {
-                    if (hit.transform.tag == "Player")
+                    if (findPlayerSound != null)
                     {
-                        agent.isStopped = false;
-                        findPlayer = true;
-                        animator.SetBool("FindPlayer", true);
-                        animator.SetBool("Idle", false);
-                        agent.speed = runSpeed;
+                        _audio.clip = findPlayerSound;
+                        _audio.Play();
                     }
                 }
             }
             //正常巡逻
-            if(agent.remainingDistance < 0.6f)//判断是否到达目的地
-            {
-                agent.SetDestination(patorlPos[Random.Range(0, patorlPos.Length)].position);//再随机巡逻一个位置                 
+            if (!agent.pathPending && agent.remainingDistance < agent.stoppingDistance)//判断是否到达目的地
+            {             
+                agent.SetDestination(patorlPos[Random.Range(0, patorlPos.Length)].position);//再随机巡逻一个位置
+                print(patorlPos[Random.Range(0, patorlPos.Length)].position);
             }
             else //没有到达目的地
             {
@@ -105,32 +116,47 @@ public class Monster : MonoBehaviour
         {
             if(Vector3.Distance(player.transform.position, transform.position) > 30f || player.hideing || Mathf.Abs(Player.Instance.transform.position.y - transform.position.y) > 6f)//逃了或者藏起来了
             {
+                if (patorlSound != null)
+                {
+                    _audio.clip = patorlSound;
+                    _audio.Play();
+                }
                 agent.speed = walkSpeed;
                 walkTime = 0;
                 findPlayer = false;
                 animator.SetBool("FindPlayer", false);
-                agent.SetDestination(patorlPos[Random.Range(0, patorlPos.Length)].position);//再随机巡逻一个位置     
+                if (!player.hideing)
+                    agent.SetDestination(patorlPos[Random.Range(0, patorlPos.Length)].position);//再随机巡逻一个位置     
+                else
+                {
+                    if(player.gameObject.transform.parent!=null)
+                    {
+                        Transform pos = player.gameObject.transform.parent.Find("patrolPos");
+                        if(pos != null)
+                        {
+                            walkTime = walkStopTime * 0.6f;
+                            agent.SetDestination(pos.position);//巡逻附近一个位置 
+                            return;
+                        }                           
+                    }
+                    agent.SetDestination(patorlPos[Random.Range(0, patorlPos.Length)].position);//再随机巡逻一个位置     
+                }
             }
             else
             {
                 agent.SetDestination(player.transform.position);
-                if(Vector3.Distance(player.transform.position, transform.position) < 2f)//抓到了
+                if(Vector3.Distance(player.transform.position, transform.position) < 3f)//抓到了
                 {
+                    if (eatPlayerSound != null)
+                    {
+                        _audio.clip = eatPlayerSound;
+                        _audio.loop = false;
+                        _audio.Play();
+                    }
                     agent.isStopped = true;
                     player.death = true;
                 }
             }          
         }                
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Interaction")//开门
-        {
-            if(other.GetComponent<InteractionObj>() != null && other.GetComponent<InteractionObj>().type == interactionType.doubleDoor)
-            {
-                other.GetComponent<InteractionObj>().OpenDoor();
-            }
-        }
     }
 }
