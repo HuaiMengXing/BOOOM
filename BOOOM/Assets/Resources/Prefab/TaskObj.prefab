@@ -115,7 +115,7 @@ MonoBehaviour:
   dir: 0
   reversed: 0
   txt: "\u62FE\u53D6"
-  randomObj: 0
+  randomObj: 1
   doorSpeed: 10
   Sound_Opend: {fileID: 0}
   doorSound_Close: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253966367819303470}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34cabaa34a3d13e45a0a6260a2b7a7fa, type: 3}
   m_Name: 
