@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1253966367819303468}
   - component: {fileID: 1253966367819303465}
   - component: {fileID: 1253966367819303464}
-  - component: {fileID: 4944930600783068893}
   m_Layer: 8
   m_Name: TaskObj
   m_TagString: Task1
@@ -31,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1253966367819303470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.86, y: 1, z: 0.81}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,11 +112,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  dir: 0
+  reversed: 0
   txt: "\u62FE\u53D6"
   randomObj: 0
   doorSpeed: 10
-  doorSound_Opend: {fileID: 0}
+  Sound_Opend: {fileID: 0}
   doorSound_Close: {fileID: 0}
+  getSound: {fileID: 0}
+  otherOneDoor: {fileID: 0}
+  dis: 0
+  pullSpeed: 3
+  text: {fileID: 0}
 --- !u!114 &1253966367819303464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,19 +142,3 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!54 &4944930600783068893
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1253966367819303470}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0

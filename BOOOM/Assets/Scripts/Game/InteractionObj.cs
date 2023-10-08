@@ -11,20 +11,30 @@ public enum interactionType
     tv,
     pull_out,
 }
+public enum dir
+{
+    X,
+    Y,
+    Z
+}
 public class InteractionObj : MonoBehaviour
 {
     public interactionType type = interactionType.getObj;
+    public dir dir = dir.X;
+    public bool reversed;
     public string txt;
     [Header("是否随机")]
     public bool randomObj = false;
     [Header("门或者拉柜")]
     public float doorSpeed = 10;
-    public AudioClip doorSound_Opend = null;
+    public AudioClip Sound_Opend = null;
     public AudioClip doorSound_Close = null;
+    [Header("获得物品声音")]
+    public AudioClip getSound = null;
     [Header("双开门关联")]
     public GameObject otherOneDoor;
 
-    [Header("拉柜距离")]
+    [Header("拉柜距离、速度")]
     public float dis;
     public float pullSpeed = 3;
     [Header("触发特殊聊天")]
@@ -45,11 +55,30 @@ public class InteractionObj : MonoBehaviour
     private AudioSource audioS;
     private bool hideing;
     private Vector3 playerPos;
+    private Vector3 pullOutPos;
+    private Vector3 nowPullOutPos;
+    private Vector3 Objdir;
     void Start()
     {
+        switch (dir)
+        {
+            case dir.X:
+                Objdir = transform.right;
+                break;
+            case dir.Y:
+                Objdir = transform.up;
+                break;
+            case dir.Z:
+                Objdir = transform.forward;
+                break;
+        }
+        if(reversed)
+            Objdir = -Objdir;
+
         audioS = GetComponent<AudioSource>();
-        doorQuaternion = Quaternion.LookRotation(-transform.right);
+        doorQuaternion = Quaternion.LookRotation(Objdir);
         newdoorQ = transform.rotation;
+        pullOutPos = transform.localPosition;
         if (otherOneDoor!=null)
         {
             otherDoorQuaternion = Quaternion.LookRotation(otherOneDoor.transform.right);
@@ -75,7 +104,8 @@ public class InteractionObj : MonoBehaviour
     {
         randomPos = GameObject.FindGameObjectsWithTag("Random");
         int id = Random.Range(0, randomPos.Length);
-        this.transform.position = randomPos[id].transform.position;
+        transform.parent.transform.position = randomPos[id].transform.position;
+        transform.parent.transform.SetParent(randomPos[id].transform);
     }
 
     public void outlineOpen()
@@ -103,9 +133,9 @@ public class InteractionObj : MonoBehaviour
             case interactionType.doubleDoor:
                 door = true;
                 if (doorIsOpen)
-                    txt = "开门";
+                    txt = "打开";
                 else
-                    txt = "关门";
+                    txt = "关闭";
                 break;
             case interactionType.getObj:
                 GetObj();
@@ -117,11 +147,11 @@ public class InteractionObj : MonoBehaviour
                 OpendTV();
                 break;
             case interactionType.pull_out:
-                pull = true;
-                if (isPull)
-                    txt = "打开";
-                else
-                    txt = "推回";
+                if (time == 0)
+                {
+                    nowPullOutPos = transform.localPosition;
+                    pull = true;
+                }                  
                 break;
             default:
                 break;
@@ -132,9 +162,9 @@ public class InteractionObj : MonoBehaviour
     {
         if (door)
         {
-            if (audioS != null && !audioS.isPlaying)
+            if (audioS != null && Sound_Opend != null)
             {
-                audioS.clip = doorSound_Opend;
+                audioS.clip = Sound_Opend;
                 audioS.Play();
             }
                 
@@ -148,7 +178,7 @@ public class InteractionObj : MonoBehaviour
                     time = 0;
                     transform.rotation = newdoorQ;
                     doorIsOpen = false;
-                    if (audioS != null)
+                    if (audioS != null && doorSound_Close != null)
                     {
                         audioS.clip = doorSound_Close;
                         audioS.Play();
@@ -174,9 +204,9 @@ public class InteractionObj : MonoBehaviour
     {
         if (door)
         {
-            if (audioS != null && !audioS.isPlaying)
+            if (audioS != null && Sound_Opend != null)
             {
-                audioS.clip = doorSound_Opend;
+                audioS.clip = Sound_Opend;
                 audioS.Play();
             }
 
@@ -193,7 +223,7 @@ public class InteractionObj : MonoBehaviour
                     otherOneDoor.transform.rotation = otherNewdoorQ;
 
                     doorIsOpen = false;
-                    if (audioS != null)
+                    if (audioS != null && doorSound_Close != null)
                     {
                         audioS.clip = doorSound_Close;
                         audioS.Play();
@@ -265,30 +295,30 @@ public class InteractionObj : MonoBehaviour
     {
         if (pull)
         {
-            if (audioS != null && !audioS.isPlaying)
+            if (audioS != null && Sound_Opend != null)
             {
-                audioS.clip = doorSound_Opend;
+                audioS.clip = Sound_Opend;
                 audioS.Play();
             }
             time += Time.deltaTime * pullSpeed;
             if (isPull)
             {
-                transform.position = Vector3.Lerp(transform.position, transform.position - transform.forward * dis, time);
+                transform.localPosition = Vector3.Lerp(nowPullOutPos, pullOutPos, time);
                 if (time >= 1)
                 {
                     pull = false;
-                    transform.position = transform.position - transform.forward * dis;
+                    transform.localPosition = pullOutPos;
                     time = 0;
                     isPull = false;
                 }
             }
             else
             {
-                transform.position = Vector3.Lerp(transform.position, transform.position + transform.forward * dis, time);
+                transform.localPosition = Vector3.Lerp(pullOutPos, pullOutPos + Objdir * dis, time);
                 if (time >= 1)
                 {
                     pull = false;
-                    transform.position = transform.position + transform.forward * dis;
+                    transform.localPosition = pullOutPos + Objdir * dis;
                     time = 0;
                     isPull = true;
                 }
@@ -296,9 +326,14 @@ public class InteractionObj : MonoBehaviour
         }
     }
     public void GetObj()
-    {     
+    {
+        if (audioS != null && getSound != null)
+        {
+            audioS.clip = getSound;
+            audioS.Play();
+        }
         //属于当前任务的物品
-        if(TaskMgr.Instance.objects.ContainsValue(this.gameObject))
+        if (TaskMgr.Instance.objects.ContainsValue(this.gameObject))
         {
             for (int i = 0; i < TaskMgr.Instance.objects.Count; i++)
             {
@@ -329,11 +364,5 @@ public class InteractionObj : MonoBehaviour
         {
             interactionEvent();
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(randomObj && other.tag == "Room" && other.transform.parent == null)
-            transform.SetParent(other.transform, false);
     }
 }

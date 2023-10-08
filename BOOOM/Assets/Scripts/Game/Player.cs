@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     [Header("旋转速度")]
     public float X_rotationSpeed;
     public float Y_rotationSpeed;
+    [Header("音效文件")]
+    public AudioClip runSound;
 
     [HideInInspector]
     public bool changeRooms;
@@ -42,6 +44,8 @@ public class Player : MonoBehaviour
     private bool isOnGround;
     private bool isCeiling;
     private Vector3 velocity;
+    private AudioSource _audioSource;
+    private float runTime;
 
     private void Awake()
     {
@@ -55,9 +59,11 @@ public class Player : MonoBehaviour
         moveSpeed = walkMoveSpeed;
         _camera = Camera.main.GetComponent<CameraMove>();
         _characterController = GetComponent<CharacterController>();
+        _audioSource = GetComponent<AudioSource>();
         lookHight = _camera.lookBodyHight;
         velocity = Vector3.zero;
         isOnGround = true;
+        runTime = 0;
     }
 
     void Update()
@@ -81,16 +87,32 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            runTime += Time.deltaTime;
             if (moveSpeed < runMoveSpeed)
                 moveSpeed += Time.deltaTime * 3.5f;
             if(moveSpeed > runMoveSpeed)
                 moveSpeed = runMoveSpeed;
+            if(!_audioSource.isPlaying && runSound != null && runTime > 4f)
+            {
+                _audioSource.volume = 1;
+                _audioSource.clip = runSound;
+                _audioSource.Play();
+            }
+
         }           
         else if (moveSpeed > walkMoveSpeed)
         {            
-            moveSpeed -= Time.deltaTime * 3.5f;
+            if(_audioSource.isPlaying)
+                _audioSource.volume -= Time.deltaTime;
+
+            moveSpeed -= Time.deltaTime * 2.5f;
             if (moveSpeed < walkMoveSpeed)
+            {
                 moveSpeed = walkMoveSpeed;
+                runTime = 0;
+                _audioSource.Stop();
+            }
+                
         }
            
 

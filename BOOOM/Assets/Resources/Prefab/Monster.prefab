@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 246565054}
   - component: {fileID: 246565055}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CameraLook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246565053}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.03, y: 0.16, z: 7.25}
+  m_LocalPosition: {x: -0.03, y: 0.16, z: 7.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eatPos: {fileID: 1232264820}
-  eatSpeed: 0.1
+  eatSpeed: 0.8
   text: {fileID: 0}
 --- !u!1 &1232264819
 GameObject:
@@ -56,7 +56,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1232264820}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232264819}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.030000905, y: -5.28, z: 6.380001}
+  m_LocalPosition: {x: -0.03, y: -5.28, z: 6.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2373200889935314653}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand1IK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3988697484004678082}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tongue1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8511335063539688061}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Feet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2661326619889117505}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Eyes2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3349436065737695215}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand3IK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 640982612342373927}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand4-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8948397335476696915}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8845641354821371623}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LowerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,8 @@ GameObject:
   - component: {fileID: 3754813350960746622}
   - component: {fileID: 3754813350960746623}
   - component: {fileID: 4052390478265489412}
-  m_Layer: 0
+  - component: {fileID: 672055414}
+  m_Layer: 9
   m_Name: Monster
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -421,11 +422,110 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 3
-  runSpeed: 7
+  runSpeed: 7.8
   walkStopTime: 15
   idleTime: 4
+  patorlSound: {fileID: 0}
+  findPlayerSound: {fileID: 0}
+  eatPlayerSound: {fileID: 0}
   patorlPos:
   - {fileID: 0}
+--- !u!82 &672055414
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3754813350960746620}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0.2
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3956942534229688884
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 147376747819462365}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tongue2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +566,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4146367100755599081}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7682129824767227837}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FeetIK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +629,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8768876115204606946}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,7 +662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9106055107598969151}
   - component: {fileID: 6377597919747852301}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Maid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +770,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8933183831137227618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Feet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,7 +802,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4193944991442680703}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand2IK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +833,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3667647831017781676}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -765,7 +865,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1755136453589732314}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TongueIK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +896,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4891123768165096024}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -834,7 +934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8186991630713277408}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand4IK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -865,7 +965,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 823010090120001171}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand1-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +996,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5570494751628558292}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Eyes1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,7 +1027,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3475688824095570355}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand2-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -958,7 +1058,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6328616511957785357}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -990,7 +1090,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2385783187638715745}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand3-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1021,7 +1121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8603363182751929102}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1055,7 +1155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2336802190580714369}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BodyRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
