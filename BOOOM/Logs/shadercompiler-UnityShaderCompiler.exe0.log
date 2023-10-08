@@ -2,8 +2,5 @@ Base path: 'C:/Users/wwwz/Desktop/Unity/2021.3.6f1c1/Editor/Data', plugins path 
 Cmd: initializeCompiler
 
 Cmd: shutdown
-<<<<<<< HEAD
 
 Quitting shader compiler process
-=======
->>>>>>> Fend_branch
