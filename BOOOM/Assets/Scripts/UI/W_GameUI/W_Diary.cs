@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Unity.VisualScripting;
@@ -6,45 +6,58 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ÈÕÀúÀà
+/// æ—¥å†ç±»
 /// </summary>
 public class W_Diary : MonoBehaviour
 {
-    [Multiline(5)]
     public string content;
     public Sprite background;
 
-    [Header("ÈÕ¼Ç»­²¼")]
+    [Header("æ—¥è®°ç”»å¸ƒ")]
     public Canvas targetCanvas;
 
     [Range(0f,1000f)]
-    [Header("ÌØĞ§²¥·ÅËÙ¶È")]
+    [Header("ç‰¹æ•ˆæ’­æ”¾é€Ÿåº¦")]
     public float effectSpeed = 8f;
 
-    private bool isOpen = false;        //true£ºÈÕ¼Ç´ò¿ªÁË
+    [HideInInspector]
+    public bool isOpen = false;        //trueï¼šæ—¥è®°æ‰“å¼€äº†
 
-    private Text targetText;            //targetCanvasÏÂµÄÎÄ±¾¿ò¡¢Í¼Ïñ×é¼ş
+    private Text targetText;            //targetCanvasä¸‹çš„æ–‡æœ¬æ¡†ã€å›¾åƒç»„ä»¶
     private Image targetImage;
     private CanvasGroup targetCanvasGroup;
+    private AudioSource _audio;
 
     public void Awake()
     {
         targetImage = targetCanvas.GetComponentInChildren<Image>();
         targetText = targetImage.GetComponentInChildren<Text>();
         targetCanvasGroup = targetCanvas.GetComponent<CanvasGroup>();
+        _audio = GetComponent<AudioSource>();
     }
     public void Update()
     {
-        if (isOpen == true && Input.GetKeyDown(KeyCode.Escape))
+        if((Time.timeScale == 0 || Player.Instance.death) && isOpen == true)
         {
-            Hide();
+            targetImage.rectTransform.localScale = new Vector3(0, 0, 1);
+            targetCanvasGroup.alpha = 0;
+            isOpen = false;
+            targetCanvas.enabled = false;
+            Player.Instance.diary = false;
         }
+        if (isOpen == true && Input.GetMouseButtonDown(0) && Player.Instance.diary)
+        {
+            Player.Instance.diary = false;
+            Hide();
+        }           
     }
     public void Show()
     {
         if (isOpen == true) return;
+        _audio.Play();
         targetText.text = content;
         targetImage.sprite = background;
+        Player.Instance.diary = true;
         StartCoroutine(PlayEffect());
     }
     public void Hide() 
@@ -55,7 +68,7 @@ public class W_Diary : MonoBehaviour
     private IEnumerator<WaitForSeconds> PlayEffect()
     {
         float rate = isOpen ? 1 : 0;
-        if (isOpen == false && targetCanvasGroup.alpha == 0)  //¿ªÆô¶¯»­
+        if (isOpen == false && targetCanvasGroup.alpha == 0)  //å¼€å¯åŠ¨ç”»
         {
             targetCanvas.enabled = true;
             while (rate <= 1)
@@ -69,7 +82,7 @@ public class W_Diary : MonoBehaviour
             targetCanvasGroup.alpha = 1;
             isOpen = true;
         }
-        else if (isOpen == true && targetCanvasGroup.alpha == 1)//¹Ø±Õ¶¯»­
+        else if (isOpen == true && targetCanvasGroup.alpha == 1)//å…³é—­åŠ¨ç”»
         {
             while(rate>=0)
             {
@@ -90,7 +103,7 @@ public class W_Diary : MonoBehaviour
     //==== for test ====
     //public void OnGUI()
     //{
-    //    if (GUILayout.Button("---===¿ªÆôÈÕ¼Ç===---") == true)
+    //    if (GUILayout.Button("---===å¼€å¯æ—¥è®°===---") == true)
     //    {
     //        Show();
     //    }

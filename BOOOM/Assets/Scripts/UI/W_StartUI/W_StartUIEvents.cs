@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,10 +8,17 @@ using UnityEngine.UI;
 public class W_StartUIEvents : MonoBehaviour
 {
     public Text bestRecord;
-
+    private int gameTime;
+    private int minute;
+    private float second;
     public void Start()
     {
-        
+        Time.timeScale = 1;
+        gameTime = PlayerPrefs.GetInt("gameTime",0);
+        minute = gameTime / 60;
+        second = gameTime % 60;
+
+        bestRecord.text = "Record" + "\n" + minute + "'" + second + "''";
     }
 
 

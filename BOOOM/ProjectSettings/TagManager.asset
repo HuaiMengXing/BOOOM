@@ -15,6 +15,7 @@ TagManager:
   - Task3
   - Task4
   - Task5
+  - Diary
   layers:
   - Default
   - TransparentFX

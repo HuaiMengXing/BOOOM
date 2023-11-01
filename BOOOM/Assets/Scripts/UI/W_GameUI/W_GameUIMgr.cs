@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq.Expressions;
@@ -7,10 +7,13 @@ using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 /// <summary>
-/// ÓÎÏ·³¡¾°ÖĞµÄUI¹ÜÀíÆ÷
+/// æ¸¸æˆåœºæ™¯ä¸­çš„UIç®¡ç†å™¨
 /// </summary>
 public class W_GameUIMgr : MonoBehaviour
 {
+    public AudioSource BkMusic;
+    [HideInInspector]
+    public bool success = false;
     private static W_GameUIMgr instance;
     public static W_GameUIMgr Instance
     {
@@ -24,10 +27,18 @@ public class W_GameUIMgr : MonoBehaviour
         }
     }
 
-    enum CanvasType     //Í¨¹ı°ÙÎ»À´Çø·Ö²ã¼¶£¬ÓĞÓÃµÄUI²ã¼¶¶¼Òª´óÓÚ100
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !Player.Instance.death)
+            ShowPause();
+        if (success && BkMusic.volume > 0)
+            BkMusic.volume -= Time.deltaTime * 0.5f;
+    }
+
+    enum CanvasType     //é€šè¿‡ç™¾ä½æ¥åŒºåˆ†å±‚çº§ï¼Œæœ‰ç”¨çš„UIå±‚çº§éƒ½è¦å¤§äº100
     {
         None = -1,
-        Pause = 610,
+        Pause = 510,
         Success = 620,
         Die = 621,
     }
@@ -47,9 +58,9 @@ public class W_GameUIMgr : MonoBehaviour
             this.type = elem.type;
         }
     }
-    [Description("¸÷¸ö½çÃæµÄUIÔ¤ÖÆÌå")]
+    [Description("å„ä¸ªç•Œé¢çš„UIé¢„åˆ¶ä½“")]
     public GameObject pausePrefab, successPrefab, diePrefab;
-    [Description("¸÷¸öUIµÄäÖÈ¾Ïà»ú")]
+    [Description("å„ä¸ªUIçš„æ¸²æŸ“ç›¸æœº")]
     public Camera cma;
 
     private Stack<CanvasElem> canvasStack;
@@ -68,41 +79,49 @@ public class W_GameUIMgr : MonoBehaviour
         canvasStack = new Stack<CanvasElem>();
     }
     /// <summary>
-    /// ÏÔÊ¾ÔİÍ£½çÃæ
+    /// æ˜¾ç¤ºæš‚åœç•Œé¢
     /// </summary>
     public void ShowPause()
     {
         Process(CanvasType.Pause, pausePrefab);
+        Cursor.lockState = CursorLockMode.None;
+        BkMusic.Pause();
         Time.timeScale = 0;
     }
     /// <summary>
-    /// ÏÔÊ¾³É¹¦½çÃæ
+    /// æ˜¾ç¤ºæˆåŠŸç•Œé¢
     /// </summary>
-    /// <param name="timeRecord">Í¨¹ıµÄÊ±¼ä¼ÇÂ¼</param>
+    /// <param name="timeRecord">é€šè¿‡çš„æ—¶é—´è®°å½•</param>
     public void ShowSuccess(string timeRecord = "")
-    {                               
+    {
+        PlayerPrefs.DeleteAll();      
         Process(CanvasType.Success, successPrefab);
-        curElem.canvas.transform.Find("Record").GetComponentInChildren<Text>().text = "Record: " + timeRecord;
-        Time.timeScale = 0;
+        curElem.canvas.transform.Find("Panel").transform.Find("Record").GetComponentInChildren<Text>().text = "Record: " + timeRecord;
+        Cursor.lockState = CursorLockMode.None;
+        PlayerPrefs.SetInt("gameTime", (int)Time.time);
+        success = true;
     }
     /// <summary>
-    /// ÏÔÊ¾Ê§°Ü½çÃæ
+    /// æ˜¾ç¤ºå¤±è´¥ç•Œé¢
     /// </summary>
     public void ShowDie()
     {
+        PlayerPrefs.DeleteAll();
         Process(CanvasType.Die, diePrefab);
-        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        BkMusic.Pause();
     }
 
     /// <summary>
-    /// Òş²Øµ±Ç°½çÃæ(½ö½öÖ»ÊÇÈÃËü²»ÏÔÊ¾£¬²¢Ã»ÓĞ¹Ø±Õµô)
+    /// éšè—å½“å‰ç•Œé¢(ä»…ä»…åªæ˜¯è®©å®ƒä¸æ˜¾ç¤ºï¼Œå¹¶æ²¡æœ‰å…³é—­æ‰)
     /// </summary>
     public void HideCurrent()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         if (curElem.canvas != null) curElem.canvas.SetActive(false);
     }
     /// <summary>
-    /// ÏÔÊ¾µ±Ç°½çÃæ
+    /// æ˜¾ç¤ºå½“å‰ç•Œé¢
     /// </summary>
     public void ShowCurrent()
     {
@@ -110,10 +129,10 @@ public class W_GameUIMgr : MonoBehaviour
     }
 
     /// <summary>
-    /// ¹Ø±Õµ±Ç°½çÃæ
+    /// å…³é—­å½“å‰ç•Œé¢
     /// </summary>
     public void CloseCurrent()
-    {
+    {      
         HideCurrent();
         if (nexElem.canvas != null) Destroy(nexElem.canvas);
         nexElem.CopyElem(curElem);
@@ -128,35 +147,35 @@ public class W_GameUIMgr : MonoBehaviour
         ShowCurrent();
     }
 
-    private void Process(CanvasType t, GameObject obj)      //¶ÔÕ»ºÍÒ»Ğ©Êı¾İ½øĞĞ²Ù×÷
+    private void Process(CanvasType t, GameObject obj)      //å¯¹æ ˆå’Œä¸€äº›æ•°æ®è¿›è¡Œæ“ä½œ
     {
-        if ((int)curElem.type/100 > (int)t/100) return;             //ÏëÒª´ò¿ªµÄ UI µÄ²ã¼¶¸üµÍ£¬Ö±½Ó·µ»Ø
+        if ((int)curElem.type/100 > (int)t/100) return;             //æƒ³è¦æ‰“å¼€çš„ UI çš„å±‚çº§æ›´ä½ï¼Œç›´æ¥è¿”å›
         HideCurrent();
-        if ((int)nexElem.type / 100 != (int)t / 100)        //¼ÇÂ¼ÉÏ´Î¹Ø±ÕµÄ UI ºÍÏëÒªµÄÔÚ²»Í¬²ã¼¶Ê±
-        {                                                   //Ïú»ÙÉÏ´Î¹Ø±ÕµÄ
+        if ((int)nexElem.type / 100 != (int)t / 100)        //è®°å½•ä¸Šæ¬¡å…³é—­çš„ UI å’Œæƒ³è¦çš„åœ¨ä¸åŒå±‚çº§æ—¶
+        {                                                   //é”€æ¯ä¸Šæ¬¡å…³é—­çš„
             Destroy(nexElem.canvas);
             nexElem.canvas = null;
         }
-        if (nexElem.canvas != null)                         //ÉÏ´Î¹Ø±ÕµÄ²»Îª¿ÕÊ±£¬½«µ±Ç°µÄ(ÊÇ¿ªÆô×´Ì¬µÄ) UI ¼ÓÈëÕ»ÖĞ
-        {                                                   //²¢½«ÉÏ´Î¹Ø±ÕµÄ¸øµ½ÏÖÔÚ
+        if (nexElem.canvas != null)                         //ä¸Šæ¬¡å…³é—­çš„ä¸ä¸ºç©ºæ—¶ï¼Œå°†å½“å‰çš„(æ˜¯å¼€å¯çŠ¶æ€çš„) UI åŠ å…¥æ ˆä¸­
+        {                                                   //å¹¶å°†ä¸Šæ¬¡å…³é—­çš„ç»™åˆ°ç°åœ¨
             if (curElem.canvas != null) canvasStack.Push(new CanvasElem(curElem.canvas, curElem.type));
             curElem.CopyElem(nexElem);
             nexElem.canvas = null;
         }
-        if ((int)curElem.type / 100 == (int)t / 100)        //Í¬Ò»²ã¼¶µÄ,Òş²ØÏÖÔÚµÄ
+        if ((int)curElem.type / 100 == (int)t / 100)        //åŒä¸€å±‚çº§çš„,éšè—ç°åœ¨çš„
         {
-            if (curElem.type != t)                  //È»ºóÅĞ¶ÏÏÖÔÚµÄ½çÃæÊÇ·ñÊÇÏëÒªµÄ£¬²»ÊÇÏëÒªµÄ£¬³öÕ»²¢Ïú»Ùµô
+            if (curElem.type != t)                  //ç„¶ååˆ¤æ–­ç°åœ¨çš„ç•Œé¢æ˜¯å¦æ˜¯æƒ³è¦çš„ï¼Œä¸æ˜¯æƒ³è¦çš„ï¼Œå‡ºæ ˆå¹¶é”€æ¯æ‰
             {
-                Destroy(curElem.canvas);            //°ÑÏÖÔÚµÄÏú»Ùµô
+                Destroy(curElem.canvas);            //æŠŠç°åœ¨çš„é”€æ¯æ‰
                 CreateCanvasElem(t, obj);
             }
         }
-        else                                                //ÏëÒªµÄ²ã¼¶¸ü¸ß£¬ĞÂ½¨È»ºóÈëÕ»
-        {                                                   //½öÔÚÏëÒªµÄ UI ±ÈÏÖÔÚ²ã¼¶¸ßÊ±²ÅÈëÕ»
+        else                                                //æƒ³è¦çš„å±‚çº§æ›´é«˜ï¼Œæ–°å»ºç„¶åå…¥æ ˆ
+        {                                                   //ä»…åœ¨æƒ³è¦çš„ UI æ¯”ç°åœ¨å±‚çº§é«˜æ—¶æ‰å…¥æ ˆ
             if (curElem.canvas != null) canvasStack.Push(new CanvasElem(curElem.canvas, curElem.type));
             CreateCanvasElem(t, obj);
         }
-        ShowCurrent();  //ÏÔÊ¾½çÃæ
+        ShowCurrent();  //æ˜¾ç¤ºç•Œé¢
     }
     private void CreateCanvasElem(CanvasType t, GameObject obj)
     {

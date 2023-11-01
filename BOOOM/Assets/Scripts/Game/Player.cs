@@ -22,12 +22,19 @@ public class Player : MonoBehaviour
     public float X_rotationSpeed;
     public float Y_rotationSpeed;
     [Header("音效文件")]
-    public AudioClip runSound;
+    public AudioSource _audioHeartbeat;
+    public AudioSource _audioFootsteps;
+    public AudioClip footsteps_Default;
+    public AudioClip footsteps_Fast;
+    public AudioClip Heartbeat_Default;
+    public AudioClip Heartbeat_Fast;
 
     [HideInInspector]
     public bool changeRooms;
     [HideInInspector]
     public bool hideing = false;
+    [HideInInspector]
+    public bool diary = false;
     [HideInInspector]
     public Vector3 hidePlayerPos;
     [HideInInspector]
@@ -44,8 +51,8 @@ public class Player : MonoBehaviour
     private bool isOnGround;
     private bool isCeiling;
     private Vector3 velocity;
-    private AudioSource _audioSource;
     private float runTime;
+    private bool closeSound = false;
 
     private void Awake()
     {
@@ -59,66 +66,109 @@ public class Player : MonoBehaviour
         moveSpeed = walkMoveSpeed;
         _camera = Camera.main.GetComponent<CameraMove>();
         _characterController = GetComponent<CharacterController>();
-        _audioSource = GetComponent<AudioSource>();
         lookHight = _camera.lookBodyHight;
         velocity = Vector3.zero;
         isOnGround = true;
         runTime = 0;
+        _audioHeartbeat.clip = Heartbeat_Default;
+        _audioHeartbeat.Play();
+        _audioFootsteps.clip = footsteps_Default;
     }
 
     void Update()
     {
         if (Time.timeScale == 0 || death)
+        {
+            closeSound = true;
+            if (closeSound && _audioHeartbeat.isPlaying)
+                _audioHeartbeat.Pause();
+            if (closeSound && _audioFootsteps.isPlaying)
+                _audioFootsteps.Pause();
+            return;
+        }
+        else if (closeSound)
+        {
+            closeSound = false;
+            _audioHeartbeat.UnPause();
+            _audioFootsteps.UnPause();
+        }
+
+        
+        if(move == Vector3.zero || hideing)
+        {
+            if (_audioHeartbeat.clip == Heartbeat_Fast)
+            {
+                _audioHeartbeat.volume = 1;
+                _audioHeartbeat.clip = Heartbeat_Default;
+                _audioHeartbeat.Play();
+            }
+            _audioFootsteps.Stop();
+        }        
+        else if(!_audioFootsteps.isPlaying)
+            _audioFootsteps.Play();
+
+        if (diary)
             return;
 
         if (!changeRooms && !hideing)
             Move();
+
         rotationLook();
 
         if (!hideing)
             CrouchAndJump();
-
-        if (Input.GetKeyDown(KeyCode.F))
-            _camera.Shake();
     }
 
     //移动
     public void Move()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        move.z = Input.GetAxis("Vertical");
+        move.x = Input.GetAxis("Horizontal");
+        move.y = 0;
+
+        if (Input.GetKey(KeyCode.LeftShift) && move != Vector3.zero)
         {
             runTime += Time.deltaTime;
             if (moveSpeed < runMoveSpeed)
                 moveSpeed += Time.deltaTime * 3.5f;
             if(moveSpeed > runMoveSpeed)
                 moveSpeed = runMoveSpeed;
-            if(!_audioSource.isPlaying && runSound != null && runTime > 4f)
+            if(_audioFootsteps.clip == footsteps_Default && runTime > 1f)//普通变急跑
+            {                
+                _audioFootsteps.clip = footsteps_Fast;
+                _audioFootsteps.Play();
+            }
+            if (_audioHeartbeat.clip == Heartbeat_Default && runTime > 2f)//普通变急喘
             {
-                _audioSource.volume = 1;
-                _audioSource.clip = runSound;
-                _audioSource.Play();
+                _audioHeartbeat.clip = Heartbeat_Fast;
+                _audioHeartbeat.Play();
             }
 
         }           
         else if (moveSpeed > walkMoveSpeed)
-        {            
-            if(_audioSource.isPlaying)
-                _audioSource.volume -= Time.deltaTime;
+        {
+            if (_audioHeartbeat.clip == Heartbeat_Fast &&_audioHeartbeat.isPlaying)
+                _audioHeartbeat.volume -= Time.deltaTime;
 
             moveSpeed -= Time.deltaTime * 2.5f;
             if (moveSpeed < walkMoveSpeed)
             {
                 moveSpeed = walkMoveSpeed;
                 runTime = 0;
-                _audioSource.Stop();
+                if (_audioHeartbeat.clip == Heartbeat_Fast)//急喘变普通
+                {
+                    _audioHeartbeat.volume = 1;
+                    _audioHeartbeat.clip = Heartbeat_Default;
+                    _audioHeartbeat.Play();
+                }
+                if (_audioFootsteps.clip == footsteps_Fast)//急跑变普通
+                {
+                    _audioFootsteps.clip = footsteps_Default;
+                    _audioFootsteps.Play();
+                }
             }
                 
         }
-           
-
-        move.z = Input.GetAxis("Vertical");
-        move.x = Input.GetAxis("Horizontal");
-        move.y = 0;
         _characterController.Move(transform.TransformDirection(move) * moveSpeed * Time.deltaTime);      
     }
 

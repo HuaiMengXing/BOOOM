@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SceneMgr : MonoBehaviour
 {
+    static private SceneMgr instance;
+    static public SceneMgr Instance => instance;
     [Header("12间房间")]
     public GameObject[] rooms_1;
     public GameObject[] rooms_2;
@@ -27,10 +29,16 @@ public class SceneMgr : MonoBehaviour
     private float time;   
 
     private GameData gameData;
+    private AudioSource _audio;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         timeIndex = Random.Range(changeMinTime, changeMaxTime);
+        _audio = GetComponent<AudioSource>();
 
         //读出数据
         if (PlayerPrefs.GetInt("continue", 0) == 1)
@@ -40,17 +48,17 @@ public class SceneMgr : MonoBehaviour
                 return;
             //房间位置调整
             for (int i = 0; i < rooms_1.Length; i++)
-                rooms_1[i].transform.position = gameData.roomsPos[i];
-            for (int i = rooms_1.Length; i < rooms_2.Length + rooms_1.Length; i++)
-                rooms_2[i].transform.position = gameData.roomsPos[i];
-            for (int i = rooms_2.Length + rooms_1.Length; i < rooms_3.Length + rooms_2.Length + rooms_1.Length; i++)
-                rooms_3[i].transform.position = gameData.roomsPos[i];
-            for (int i = rooms_3.Length + rooms_2.Length + rooms_1.Length; i < rooms_4.Length + rooms_3.Length + rooms_2.Length + rooms_1.Length; i++)
-                rooms_4[i].transform.position = gameData.roomsPos[i];
+                rooms_1[i].transform.position = new Vector3((float)gameData.roomsPos[i].x, (float)gameData.roomsPos[i].y, (float)gameData.roomsPos[i].z);
+            for (int i = 0; i < rooms_2.Length; i++)
+                rooms_2[i].transform.position = new Vector3((float)gameData.roomsPos[i + rooms_1.Length].x, (float)gameData.roomsPos[i + rooms_1.Length].y, (float)gameData.roomsPos[i + rooms_1.Length].z);
+            for (int i = 0; i < rooms_3.Length; i++)
+                rooms_3[i].transform.position = new Vector3((float)gameData.roomsPos[i + rooms_2.Length + rooms_1.Length].x, (float)gameData.roomsPos[i + rooms_2.Length + rooms_1.Length].y, (float)gameData.roomsPos[i + rooms_2.Length + rooms_1.Length].z);
+            for (int i = 0; i < rooms_4.Length; i++)
+                rooms_4[i].transform.position = new Vector3((float)gameData.roomsPos[i + rooms_2.Length + rooms_3.Length + rooms_1.Length].x, (float)gameData.roomsPos[i + rooms_2.Length + rooms_3.Length + rooms_1.Length].y, (float)gameData.roomsPos[i + rooms_2.Length + rooms_3.Length + rooms_1.Length].z);
 
             //人物怪物位置面向调整
-            Player.Instance.transform.position = gameData.playerPos;
-            Monster.Instance.transform.position = gameData.monsterPos;
+            Player.Instance.transform.position = new Vector3((float)gameData.playerPos.x, (float)gameData.playerPos.y,(float)gameData.playerPos.z);
+            Monster.Instance.transform.position = new Vector3((float)gameData.monsterPos.x, (float)gameData.monsterPos.y, (float)gameData.monsterPos.z);
         }
     }
 
@@ -59,9 +67,6 @@ public class SceneMgr : MonoBehaviour
         time += Time.deltaTime;
         if (time > timeIndex)
             ChangeRoomIndex();
-
-        if (Input.GetKeyDown(KeyCode.P))
-            SaveAllData();
     }
 
     public void ChangeRoomIndex()
@@ -112,6 +117,7 @@ public class SceneMgr : MonoBehaviour
                     if (rooms_1[i].GetComponentInChildren<CameraMove>())//在这个房间里面，则调用振动
                     {
                         rooms_1[i].GetComponentInChildren<CameraMove>().Shake();
+                        _audio.Play();
                         Player.Instance.changeRooms = true;
                         Player.Instance.GetComponent<CharacterController>().enabled = false;
                     }
@@ -140,6 +146,7 @@ public class SceneMgr : MonoBehaviour
                     if (rooms_2[i].GetComponentInChildren<CameraMove>())//在这个房间里面，则调用振动
                     {
                         rooms_2[i].GetComponentInChildren<CameraMove>().Shake();
+                        _audio.Play();
                         Player.Instance.changeRooms = true;
                         Player.Instance.GetComponent<CharacterController>().enabled = false;
                     }
@@ -168,6 +175,7 @@ public class SceneMgr : MonoBehaviour
                     if (rooms_3[i].GetComponentInChildren<CameraMove>())//在这个房间里面，则调用振动
                     {
                         rooms_3[i].GetComponentInChildren<CameraMove>().Shake();
+                        _audio.Play();
                         Player.Instance.changeRooms = true;
                         Player.Instance.GetComponent<CharacterController>().enabled = false;
                     }
@@ -196,6 +204,7 @@ public class SceneMgr : MonoBehaviour
                     if (rooms_4[i].GetComponentInChildren<CameraMove>())//在这个房间里面，则调用振动
                     {
                         rooms_4[i].GetComponentInChildren<CameraMove>().Shake();
+                        _audio.Play();
                         Player.Instance.changeRooms = true;
                         Player.Instance.GetComponent<CharacterController>().enabled = false;
                     }
@@ -220,24 +229,25 @@ public class SceneMgr : MonoBehaviour
 
     public void SaveAllData()
     {
+        print(Application.persistentDataPath);
         GameDataMgr.Instance.gameData.roomsPos.Clear();//清空之前的数据
         //房间位置保存
         for (int i = 0; i < rooms_1.Length; i++)
-            GameDataMgr.Instance.gameData.roomsPos.Add(rooms_1[i].transform.position);
-        for (int i = rooms_1.Length; i < rooms_2.Length + rooms_1.Length; i++)
-            GameDataMgr.Instance.gameData.roomsPos.Add(rooms_2[i].transform.position);
-        for (int i = rooms_2.Length + rooms_1.Length; i < rooms_3.Length + rooms_2.Length + rooms_1.Length; i++)
-            GameDataMgr.Instance.gameData.roomsPos.Add(rooms_3[i].transform.position);
-        for (int i = rooms_3.Length + rooms_2.Length + rooms_1.Length; i < rooms_4.Length + rooms_3.Length + rooms_2.Length + rooms_1.Length; i++)
-            GameDataMgr.Instance.gameData.roomsPos.Add(rooms_4[i].transform.position);
+            GameDataMgr.Instance.gameData.roomsPos.Add( new vector3(rooms_1[i].transform.position.x, rooms_1[i].transform.position.y, rooms_1[i].transform.position.z));
+        for (int i = 0; i < rooms_2.Length; i++)
+            GameDataMgr.Instance.gameData.roomsPos.Add(new vector3(rooms_2[i].transform.position.x, rooms_2[i].transform.position.y, rooms_2[i].transform.position.z));
+        for (int i = 0; i < rooms_3.Length; i++)
+            GameDataMgr.Instance.gameData.roomsPos.Add(new vector3(rooms_3[i].transform.position.x, rooms_3[i].transform.position.y, rooms_3[i].transform.position.z));
+        for (int i = 0; i < rooms_4.Length; i++)
+            GameDataMgr.Instance.gameData.roomsPos.Add(new vector3(rooms_4[i].transform.position.x, rooms_4[i].transform.position.y, rooms_4[i].transform.position.z));
 
         //人物怪物位置面向保存
         if (Player.Instance.hideing)
-            GameDataMgr.Instance.gameData.playerPos = Player.Instance.hidePlayerPos;
+            GameDataMgr.Instance.gameData.playerPos = new vector3(Player.Instance.hidePlayerPos.x, Player.Instance.hidePlayerPos.y, Player.Instance.hidePlayerPos.z) ;
         else
-            GameDataMgr.Instance.gameData.playerPos = Player.Instance.transform.position;
+            GameDataMgr.Instance.gameData.playerPos = new vector3(Player.Instance.transform.position.x, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
 
-        GameDataMgr.Instance.gameData.monsterPos = Monster.Instance.transform.position;
+        GameDataMgr.Instance.gameData.monsterPos = new vector3(Monster.Instance.transform.position.x, Monster.Instance.transform.position.y, Monster.Instance.transform.position.z); ;
 
         //任务进度保存 物品进度保存
         GameDataMgr.Instance.gameData.taskIndex = TaskMgr.Instance.index;
@@ -250,17 +260,4 @@ public class SceneMgr : MonoBehaviour
         GameDataMgr.Instance.SaveGameData();//保存到文件中
         PlayerPrefs.SetInt("continue", 1);//有数据
     }
-
-    //if (changeNumber == 2)
-    //{
-    //    index = Random.Range(0, rooms.Count);
-    //    index1 = rooms[index];//房间索引
-    //    Vector3 pos = rooms_4[index1].transform.position;
-    //    rooms.RemoveAt(index);
-
-    //    index_1 = Random.Range(0, rooms.Count);
-    //    index1_1 = rooms[index_1];
-    //    rooms_4[index1].transform.position = rooms_4[index1_1].transform.position;
-    //    rooms_4[index1_1].transform.position = pos;
-    //}
 }

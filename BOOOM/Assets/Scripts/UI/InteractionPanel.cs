@@ -9,7 +9,7 @@ public class InteractionPanel : MonoBehaviour
     private CanvasGroup canvas;
     [HideInInspector]
     public bool isShow;
-    public TextMeshProUGUI textHint;
+    public Text textHint;
     [Header("透明化速度")]
     public float alphaSpeed = 10;
     void Start()

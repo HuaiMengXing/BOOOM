@@ -32,6 +32,8 @@ public class TaskMgr : MonoBehaviour
     public List<int> taskList = new List<int>();
 
     private GameData gameData;
+    private GameObject[] interactionObjs;
+    private InteractionObj Inter;
 
     private void Awake()
     {
@@ -48,8 +50,11 @@ public class TaskMgr : MonoBehaviour
             {
                 print(keyValuePairs[i][j]);
                 keyValuePairs[i][j].SetActive(false);
-            }               
+            }
+            print(keyValuePairs[i].Length + ":" + i);
         }
+
+        interactionObjs = GameObject.FindGameObjectsWithTag("Interaction");
 
         //读出数据
         if (PlayerPrefs.GetInt("continue", 0) == 1)
@@ -122,12 +127,34 @@ public class TaskMgr : MonoBehaviour
         if((index+1)%2 == 0)
         {
             if (taskList.Count + noTaskObj[index / 2] == keyValuePairs[index/2].Length)//任务完成
+            {
                 index++;
+                StartCoroutine(Close());
+            }              
         }
 
         if (index >= texts.Length)
             return;
         DialogSystem.Instance.GetTextFromFile(texts[index]);
         DialogSystem.Instance.gameObject.SetActive(true);
+    }
+
+    IEnumerator Close()
+    {
+        for (int i = 0; i < interactionObjs.Length; i++)
+        {
+            if(interactionObjs[i] != null)
+            {
+                if (interactionObjs[i].GetComponent<InteractionObj>() != null)
+                {
+                    Inter = interactionObjs[i].GetComponent<InteractionObj>();
+                    if (Inter.type == interactionType.singleDoor)
+                        Inter.CloseDoor();
+                    else if (Inter.type == interactionType.pull_out)
+                        Inter.PullIsNO();
+                }
+            }
+        }
+        yield return null;
     }
 }

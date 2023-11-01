@@ -29,14 +29,17 @@ public class InteractionObj : MonoBehaviour
     public float doorSpeed = 10;
     public AudioClip Sound_Opend = null;
     public AudioClip doorSound_Close = null;
-    [Header("获得物品声音")]
-    public AudioClip getSound = null;
     [Header("双开门关联")]
     public GameObject otherOneDoor;
+    public BoxCollider otherDoorCollider;
+    [Header("柜门")]
+    public bool isCabinetDoor = false;
 
     [Header("拉柜距离、速度")]
     public float dis;
     public float pullSpeed = 3;
+    [Header("拾取物品音频")]
+    public AudioSource getObjSound;
     [Header("触发特殊聊天")]
     public TextAsset text;
 
@@ -45,7 +48,8 @@ public class InteractionObj : MonoBehaviour
     private bool door;
     private bool doorIsOpen;
     private bool pull;
-    private bool isPull;
+    [HideInInspector]
+    public bool isPull;
     private bool isOpenTv;
     private Quaternion doorQuaternion;
     private Quaternion otherDoorQuaternion;//要旋转的位置
@@ -124,18 +128,44 @@ public class InteractionObj : MonoBehaviour
         switch (type)
         {
             case interactionType.singleDoor:
-                door = true;
-                if (doorIsOpen)
-                    txt = "开门";
-                else
-                    txt = "关门";
+                if (time == 0)
+                {
+                    door = true;
+                    if (doorIsOpen)
+                    {
+                        if (audioS != null && doorSound_Close != null)
+                        {
+                            audioS.clip = doorSound_Close;
+                            audioS.Play();
+                        }
+                        txt = "打开";
+                    }                     
+                    else
+                    {
+                        if (audioS != null && Sound_Opend != null)
+                        {
+                            audioS.clip = Sound_Opend;
+                            audioS.Play();
+                        }
+                        txt = "关闭";
+                    }
+                       
+                }                  
                 break;
             case interactionType.doubleDoor:
-                door = true;
-                if (doorIsOpen)
-                    txt = "打开";
-                else
-                    txt = "关闭";
+                if(time == 0)
+                {
+                    door = true;
+                    if (audioS != null && Sound_Opend != null)
+                    {
+                        audioS.clip = Sound_Opend;
+                        audioS.Play();
+                    }
+                    if (doorIsOpen)
+                        txt = "开门";
+                    else
+                        txt = "关门";
+                }              
                 break;
             case interactionType.getObj:
                 GetObj();
@@ -149,6 +179,23 @@ public class InteractionObj : MonoBehaviour
             case interactionType.pull_out:
                 if (time == 0)
                 {
+                    if(isCabinetDoor)
+                    {
+                        if(transform.GetComponent<cabinetDoor>())
+                        {
+                            if (!transform.GetComponent<cabinetDoor>().FindPull())
+                            {
+                                txt = "不可";
+                                return;
+                            }
+                            txt = "交互";
+                        }
+                    }
+                    if (audioS != null && Sound_Opend != null)
+                    {
+                        audioS.clip = Sound_Opend;
+                        audioS.Play();
+                    }
                     nowPullOutPos = transform.localPosition;
                     pull = true;
                 }                  
@@ -161,13 +208,7 @@ public class InteractionObj : MonoBehaviour
     public void Door()
     {
         if (door)
-        {
-            if (audioS != null && Sound_Opend != null)
-            {
-                audioS.clip = Sound_Opend;
-                audioS.Play();
-            }
-                
+        {               
             time += Time.deltaTime * doorSpeed;
             if (doorIsOpen)
             {
@@ -204,12 +245,6 @@ public class InteractionObj : MonoBehaviour
     {
         if (door)
         {
-            if (audioS != null && Sound_Opend != null)
-            {
-                audioS.clip = Sound_Opend;
-                audioS.Play();
-            }
-
             time += Time.deltaTime * doorSpeed;
             if (doorIsOpen)
             {
@@ -221,6 +256,7 @@ public class InteractionObj : MonoBehaviour
                     time = 0;
                     transform.rotation = newdoorQ;
                     otherOneDoor.transform.rotation = otherNewdoorQ;
+                    otherDoorCollider.enabled = true;
 
                     doorIsOpen = false;
                     if (audioS != null && doorSound_Close != null)
@@ -241,6 +277,7 @@ public class InteractionObj : MonoBehaviour
                     transform.rotation = doorQuaternion;
                     otherOneDoor.transform.rotation = otherDoorQuaternion;
                     doorIsOpen = true;
+                    otherDoorCollider.enabled = false;
                 }
             }
 
@@ -295,11 +332,6 @@ public class InteractionObj : MonoBehaviour
     {
         if (pull)
         {
-            if (audioS != null && Sound_Opend != null)
-            {
-                audioS.clip = Sound_Opend;
-                audioS.Play();
-            }
             time += Time.deltaTime * pullSpeed;
             if (isPull)
             {
@@ -327,11 +359,9 @@ public class InteractionObj : MonoBehaviour
     }
     public void GetObj()
     {
-        if (audioS != null && getSound != null)
-        {
-            audioS.clip = getSound;
-            audioS.Play();
-        }
+        if (getObjSound != null)
+            getObjSound.Play();
+
         //属于当前任务的物品
         if (TaskMgr.Instance.objects.ContainsValue(this.gameObject))
         {
@@ -343,7 +373,8 @@ public class InteractionObj : MonoBehaviour
         }
         if(text != null)
         {
-            TaskMgr.Instance.noTaskObj[TaskMgr.Instance.index / 2]--;//非任务物品
+            if (TaskMgr.Instance.noTaskObj[TaskMgr.Instance.index / 2] > 0)
+                TaskMgr.Instance.noTaskObj[TaskMgr.Instance.index / 2]--;//非任务物品
             DialogSystem.Instance.GetTextFromFile(text);
             DialogSystem.Instance.gameObject.SetActive(true);
         }
@@ -357,12 +388,28 @@ public class InteractionObj : MonoBehaviour
             interactionEvent();
         }
     }
+    public void PullIsNO()
+    {
+        if (isPull)
+        {
+            interactionEvent();
+        }
+    }
 
     public void OpenDoor()
     {
         if (!doorIsOpen)
         {
             interactionEvent();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print(other.tag);
+        if(type == interactionType.doubleDoor && other.tag == "Monster")
+        {
+            OpenDoor();
         }
     }
 }

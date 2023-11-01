@@ -10,7 +10,7 @@ public class DialogSystem : MonoBehaviour
     public static DialogSystem Instance => instance;
 
     [Header("UI界面")]
-    public TextMeshProUGUI textHint;
+    public Text textHint;
 
     [Header("聊天内容出现间隔时间")]
     public float textSpeed = 0.1f;
@@ -60,9 +60,11 @@ public class DialogSystem : MonoBehaviour
             if ((TaskMgr.Instance.index+1)%2 != 0 && TaskMgr.Instance.index != TaskMgr.Instance.texts.Length - 1)//显示任务
                 TaskMgr.Instance.ShowTaskObjs();
 
-            if (TaskMgr.Instance.index != TaskMgr.Instance.texts.Length - 1)//任务结束
+            if (TaskMgr.Instance.index == TaskMgr.Instance.texts.Length - 1)//任务结束
             {
+                Cursor.lockState = CursorLockMode.None;
                 //游戏结束
+                W_GameUIMgr.Instance.ShowSuccess((int)Time.time / 3600 + ":" + (int)Time.time / 60 + ":" + (int)Time.time % 60);
             }
 
                 this.gameObject.SetActive(false);           

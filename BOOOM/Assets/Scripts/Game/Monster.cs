@@ -14,21 +14,23 @@ public class Monster : MonoBehaviour
     public float walkStopTime = 15f;
     public float idleTime = 4f;
     [Header("音效文件")]
+    public AudioSource _audio;
+    public AudioSource _audioFirst;
     public AudioClip patorlSound;
+    public AudioClip firstTimeFind; 
     public AudioClip findPlayerSound;
     public AudioClip eatPlayerSound;
     [Header("巡逻地点集")]
     public Transform[] patorlPos;
 
-    private AudioSource _audio;
     private Animator animator;
     private NavMeshAgent agent;
     private Player player;
     private bool findPlayer;
     private float walkTime;
-    private RaycastHit hit;
-    private RaycastHit hitdoor;
     private float disPlayerMonster;
+    private bool closeSound = false;
+    private bool find;
     private void Awake()
     {
         instance = this;
@@ -38,7 +40,7 @@ public class Monster : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        _audio = GetComponent<AudioSource>();
+        agent.speed = walkSpeed;
         if(patorlSound != null)
         {
             _audio.clip = patorlSound;
@@ -52,35 +54,59 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
-        if(Physics.SphereCast(new Ray(transform.position + transform.forward * 7, transform.forward), 3f, out hitdoor, 1.5f,1<<LayerMask.NameToLayer("Interaction")))
-        {
-            if (hitdoor.transform.tag == "Interaction")//开门
+        if (Time.timeScale == 0)
+        {           
+            closeSound = true;
+            if (!agent.isStopped)
+                agent.isStopped = true;
+
+            if (!player.death)
             {
-                if (hitdoor.transform.GetComponent<InteractionObj>() != null && hitdoor.transform.GetComponent<InteractionObj>().type == interactionType.doubleDoor)
-                {
-                    hitdoor.transform.GetComponent<InteractionObj>().OpenDoor();
-                }
-            }
+                if (closeSound && _audio.isPlaying)
+                    _audio.Pause();
+                if (closeSound && _audioFirst.isPlaying)
+                    _audioFirst.Pause();
+            }               
+            return;
+        }else if(closeSound)
+        {
+            closeSound = false;
+            _audio.UnPause();
+            _audioFirst.UnPause();
+            if (agent.isStopped)
+                agent.isStopped = false;
+        }
+           
+        if(W_GameUIMgr.Instance.success)
+        {
+            agent.isStopped = true;
+            return;
         }
 
-        if(!findPlayer)
+        if (!findPlayer)
         {
-            if(!player.hideing && Mathf.Abs(Player.Instance.transform.position.y - transform.position.y) < 5f)//说明在同一层，开始检测玩家,并且没有藏起来
+            if(!player.hideing && Mathf.Abs(Player.Instance.transform.position.y - transform.position.y) < 3.5f)//说明在同一层，开始检测玩家,并且没有藏起来
             {
                 disPlayerMonster = Vector3.Distance(player.transform.position, transform.position);
-                if (disPlayerMonster < 6f || (disPlayerMonster < 11f && !Physics.Raycast(transform.position, player.transform.position - transform.position, 10f))
-                    || (disPlayerMonster < 23f && !Physics.Raycast(transform.position, player.transform.position - transform.position, 21f) &&
-                    Vector3.Angle(player.transform.position - transform.position, transform.forward) < 30f))//靠近，或者在前方
+                find = !Physics.Raycast(transform.position, player.transform.position - transform.position, disPlayerMonster, ~(1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("NO")));
+                if (disPlayerMonster < 6f || (disPlayerMonster < 10f && find)  || (disPlayerMonster < 18f && find &&
+                    Vector3.Angle(player.transform.position - transform.position, transform.forward) < 40f))//靠近，或者在前方
                 {
                     agent.isStopped = false;
                     findPlayer = true;
                     animator.SetBool("FindPlayer", true);
                     animator.SetBool("Idle", false);
                     agent.speed = runSpeed;
-                    if (findPlayerSound != null)
+                    
+                    if (findPlayerSound != null)//播放追逐声音
                     {
                         _audio.clip = findPlayerSound;
                         _audio.Play();
+                    }
+                    if(firstTimeFind != null)//播放发现声音
+                    {
+                        _audioFirst.clip = firstTimeFind;
+                        _audioFirst.Play();
                     }
                 }
             }
@@ -114,10 +140,11 @@ public class Monster : MonoBehaviour
         }
         else if(!player.death)        //发现玩家逻辑
         {
-            if(Vector3.Distance(player.transform.position, transform.position) > 30f || player.hideing || Mathf.Abs(Player.Instance.transform.position.y - transform.position.y) > 6f)//逃了或者藏起来了
+            if(Vector3.Distance(player.transform.position, transform.position) > 25f || player.hideing || Mathf.Abs(Player.Instance.transform.position.y - transform.position.y) > 4f)//逃了或者藏起来了
             {
                 if (patorlSound != null)
                 {
+                    _audio.loop = true;
                     _audio.clip = patorlSound;
                     _audio.Play();
                 }
@@ -134,7 +161,7 @@ public class Monster : MonoBehaviour
                         Transform pos = player.gameObject.transform.parent.Find("patrolPos");
                         if(pos != null)
                         {
-                            walkTime = walkStopTime * 0.6f;
+                            walkTime = walkStopTime * 0.7f;
                             agent.SetDestination(pos.position);//巡逻附近一个位置 
                             return;
                         }                           

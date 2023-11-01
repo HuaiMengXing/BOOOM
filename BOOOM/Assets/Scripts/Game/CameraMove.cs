@@ -32,13 +32,16 @@ public class CameraMove : MonoBehaviour
     private Quaternion targetRot;
     private RaycastHit hitInfo;
     private InteractionObj interactionObj;
+    private W_Diary diary;
     private TaskMgr taskMgr;
     private float offsetPos_Y;
     private Player player;
     private float posY;
     private float time;
+    private AudioSource lightSound;
     private void Start()
     {
+        lightSound = GetComponent<AudioSource>();
         offsetPos_Y = offsetPos.y;
         player = Player.Instance;
         posY = 0;
@@ -57,10 +60,26 @@ public class CameraMove : MonoBehaviour
                 transform.localRotation = Quaternion.identity;
             }        
             return;
+        }     
+
+        //交互
+        InteractionEvent();
+
+        //手电筒
+        if(Input.GetMouseButtonDown(1))
+        {
+            lightSound.Play();
+            flashLight.SetActive(!flashLight.activeInHierarchy);
         }
+            
+    }
 
+    private void LateUpdate()
+    {
+        if (target == null || Time.timeScale == 0 || player.death)
+            return;
 
-        if (player != null && player.move != Vector3.zero)
+        if (player != null && player.move != Vector3.zero && !player.hideing)
             FloatHead();
 
         //z方向的偏移
@@ -75,16 +94,8 @@ public class CameraMove : MonoBehaviour
         //获取看向某个点的四元数
         targetRot = Quaternion.LookRotation(target.transform.position + Vector3.up * posY + Vector3.up * lookBodyHight + Vector3.up * (offsetPos.y - offsetPos_Y) - transform.position);
         //插值运算向目标位置靠拢
-        transform.rotation = Quaternion.Lerp(transform.rotation,targetRot, rotationSpeed * Time.deltaTime);
-
-        //交互
-        InteractionEvent();
-
-        //手电筒
-        if(Input.GetMouseButtonDown(1))
-            flashLight.SetActive(!flashLight.activeInHierarchy);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
     }
-
     public void Shake()
     {
         StartCoroutine(ShakeCamera());
@@ -160,6 +171,20 @@ public class CameraMove : MonoBehaviour
                     taskMgr.InteractionEvent();
                     Interaction.Hide();
                 }
+            }else if(hitInfo.transform.tag == "Diary")
+            {
+                diary = hitInfo.transform.GetComponent<W_Diary>();
+                if (!Interaction.isShow)
+                {
+                    Interaction.textUpdate("日记");
+                    Interaction.Show();
+                }
+                if (Input.GetKeyDown(KeyCode.E) && Interaction.isShow && !diary.isOpen)
+                {
+                    //交互处理
+                    diary.Show();
+                    Interaction.Hide();
+                }
             }
             else if (Interaction.isShow)
                 Interaction.Hide();
@@ -167,7 +192,9 @@ public class CameraMove : MonoBehaviour
         else if (Interaction.isShow)
         {
             Interaction.Hide();
-            interactionObj.outlineClose();
+            if (interactionObj != null)
+                interactionObj.outlineClose();
+            interactionObj = null;
         }
     }
 }

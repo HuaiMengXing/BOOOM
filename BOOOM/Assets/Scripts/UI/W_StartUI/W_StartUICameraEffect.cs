@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ¿ªÊ¼³¡¾°µÄÏà»úĞ§¹ûÀà
+/// å¼€å§‹åœºæ™¯çš„ç›¸æœºæ•ˆæœç±»
 /// </summary>
 public class W_StartUICameraEffect : MonoBehaviour
 {
-    [Header("Ïà»úµÄ×ª¶¯¶ÈÊıÏŞÖÆ")]
+    [Header("ç›¸æœºçš„è½¬åŠ¨åº¦æ•°é™åˆ¶")]
     public float xLimit = 30f, yLimit = 30f;
     public float rotateSpeed = 20f;
 
@@ -19,7 +19,7 @@ public class W_StartUICameraEffect : MonoBehaviour
     {
         Vector3 camRotation = this.transform.rotation.eulerAngles;
         xBegin = camRotation.x;
-        xRotation = camRotation.y;
+        xRotation = camRotation.x;
         yBegin = camRotation.y;
         yRotation = camRotation.y;
     }

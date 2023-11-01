@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// µÆ¹âÉÁË¸½Å±¾
+/// ç¯å…‰é—ªçƒè„šæœ¬
 /// </summary>
 public class W_LightFlash : MonoBehaviour
 {
@@ -11,51 +11,55 @@ public class W_LightFlash : MonoBehaviour
     public float posibility = 0.4f;
     public float len = 1f;
 
-    public AnimationCurve curve;                                    //¿ØÖÆµÆ¹â±ä»¯µÄÇúÏß
+    public AnimationCurve curve;                                    //æ§åˆ¶ç¯å…‰å˜åŒ–çš„æ›²çº¿
 
-    public Light light => this.GetComponentInChildren<Light>();     //»ñÈ¡ÎïÌåµÄLight×é¼ş
+    public Light _light => this.GetComponentInChildren<Light>();     //è·å–ç‰©ä½“çš„Lightç»„ä»¶
 
     public float speed = 1f;
     [Range(0f, 1000f)]
-    public float minGapTime = 5f;                                   //ÉÁË¸µÄ×îĞ¡¼ä¸ôÊ±¼ä
+    public float minGapTime = 5f;                                   //é—ªçƒçš„æœ€å°é—´éš”æ—¶é—´
 
     [Range(0f, 1000f)]
-    public float maxGapTime = 3f;                                   //ÉÁË¸µÄ×î´ó¼ä¸ôÊ±¼ä
+    public float maxGapTime = 3f;                                   //é—ªçƒçš„æœ€å¤§é—´éš”æ—¶é—´
 
-    private float startIntensity = 10f;                             //LightµÄÆğÊ¹ÁÁ¶È
+    private float startIntensity = 10f;                             //Lightçš„èµ·ä½¿äº®åº¦
 
     private float x = 0f;
+    private AudioSource source;
 
     public void Start()
     {
-        if (minGapTime < len) minGapTime = len;           //¶Ô·Ç·¨ÊıÖµ½øĞĞ´¦Àí(¿ÉÄÜĞèÒªÓÅ»¯)
+        if (minGapTime < len) minGapTime = len;           //å¯¹éæ³•æ•°å€¼è¿›è¡Œå¤„ç†(å¯èƒ½éœ€è¦ä¼˜åŒ–)
         if (maxGapTime < minGapTime) maxGapTime = minGapTime;
-        startIntensity = light.intensity;
-        StartCoroutine(Flash());
+        startIntensity = _light.intensity;
+        source = GetComponent<AudioSource>();
+        StartCoroutine(Flash());      
     }
 
-    IEnumerator<WaitForSeconds> ChangeIntensty()        //¸Ä±äµÆ¹âÁÁ¶È
+    IEnumerator<WaitForSeconds> ChangeIntensty()        //æ”¹å˜ç¯å…‰äº®åº¦
     {
+        if (source!= null && source.clip != null && !source.isPlaying)
+            source.Play();
         x = Random.Range(0, 1);
         float endx = x + len;
         while (x <= endx)
         {
             x += Time.deltaTime * speed;
-            light.intensity = curve.Evaluate(x) * startIntensity;
+            _light.intensity = curve.Evaluate(x) * startIntensity;
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        light.intensity = startIntensity;
+        _light.intensity = startIntensity;
         x = 0f;
     }
 
-    IEnumerator<WaitForSeconds> Flash()                     //µÆ¹âÉÁË¸
+    IEnumerator<WaitForSeconds> Flash()                     //ç¯å…‰é—ªçƒ
     {
         while (true)
         {
             if (Random.Range(0, 1000) < 1000 * posibility)
-                StartCoroutine(ChangeIntensty());           //Ò»Ö±Ö´ĞĞ¸Ä±äÁÁ¶ÈµÄº¯Êı
+                StartCoroutine(ChangeIntensty());           //ä¸€ç›´æ‰§è¡Œæ”¹å˜äº®åº¦çš„å‡½æ•°
 
-            yield return new WaitForSeconds(Random.Range(len + minGapTime, len + maxGapTime));      //Ã¿´ÎµÄ¼ä¸ôÊ±¼ä
+            yield return new WaitForSeconds(Random.Range(len + minGapTime, len + maxGapTime));      //æ¯æ¬¡çš„é—´éš”æ—¶é—´
         }
     }
 }

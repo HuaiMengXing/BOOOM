@@ -13,8 +13,8 @@ public class SetFather : MonoBehaviour
             other.transform.SetParent(transform,true);
             Camera.main.transform.SetParent(transform, true);
         }
-        if(other.tag == "Monster" && other.transform.parent == null)
-            other.transform.SetParent(transform, true);
+        if(other.tag == "Monster" && other.transform.parent.transform.parent == null)
+            other.transform.parent.transform.SetParent(transform, true);
     }
 
     private void OnTriggerExit(Collider other)
@@ -25,8 +25,8 @@ public class SetFather : MonoBehaviour
             other.transform.parent = null;
             Camera.main.transform.parent = null;
         }
-        if (other.tag == "Monster" && other.transform.parent != null)
-            other.transform.parent = null;
+        if (other.tag == "Monster" && other.transform.parent.transform.parent != null)
+            other.transform.parent.transform.parent = null;
     }
 
 }
