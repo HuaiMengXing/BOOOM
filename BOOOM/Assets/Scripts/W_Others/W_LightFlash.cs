@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 灯光闪烁脚本
@@ -43,7 +44,7 @@ public class W_LightFlash : MonoBehaviour
 
     private void Update()
     {
-        if (startIntensity == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
             return;
 
         high = transform.position.y - Player.Instance.transform.position.y;
