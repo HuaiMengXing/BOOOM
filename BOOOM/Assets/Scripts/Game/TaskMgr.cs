@@ -48,10 +48,10 @@ public class TaskMgr : MonoBehaviour
             keyValuePairs.Add(i, GameObject.FindGameObjectsWithTag(taskTag[i]));
             for (int j = 0; j < keyValuePairs[i].Length; j++)
             {
-                print(keyValuePairs[i][j]);
+                //print(keyValuePairs[i][j]);
                 keyValuePairs[i][j].SetActive(false);
             }
-            print(keyValuePairs[i].Length + ":" + i);
+            //print(keyValuePairs[i].Length + ":" + i);
         }
 
         interactionObjs = GameObject.FindGameObjectsWithTag("Interaction");
@@ -123,10 +123,18 @@ public class TaskMgr : MonoBehaviour
 
     //检测
     public void InteractionEvent()
-    {
+    {       
         if((index+1)%2 == 0)
         {
-            if (taskList.Count + noTaskObj[index / 2] == keyValuePairs[index/2].Length)//任务完成
+            if(index == 1)//特殊第一个任务
+            {
+                if (taskList.Count + noTaskObj[index / 2] >= keyValuePairs[index / 2].Length)//任务完成
+                {
+                    index++;
+                    StartCoroutine(Close());
+                }
+            }
+            else if (taskList.Count + noTaskObj[index / 2] == keyValuePairs[index/2].Length)//任务完成
             {
                 index++;
                 StartCoroutine(Close());
@@ -135,6 +143,10 @@ public class TaskMgr : MonoBehaviour
 
         if (index >= texts.Length)
             return;
+
+        if (index == 4)//激活怪物
+            Monster.Instance.gameObject.SetActive(true);
+
         DialogSystem.Instance.GetTextFromFile(texts[index]);
         DialogSystem.Instance.gameObject.SetActive(true);
     }

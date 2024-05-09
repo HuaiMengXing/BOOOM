@@ -8,16 +8,16 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 9fc0d4010bbf28b4594072e72b8655ab
+  m_OcclusionCullingData: {fileID: 36300000, guid: 98897f4a83203624c8a1325d4c2e9a16, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 1}
+  m_FogColor: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.008
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
@@ -27,7 +27,7 @@ RenderSettings:
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
   m_SkyboxMaterial: {fileID: 0}
-  m_HaloStrength: 0.5
+  m_HaloStrength: 0.1
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: ff2408681e6bc184abfd153901514e50, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -347,7 +347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 20005843}
   - component: {fileID: 20005844}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,7 +609,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &27922149
 Transform:
@@ -704,6 +704,10 @@ PrefabInstance:
     - target: {fileID: 7229178054137772383, guid: 7da8822c9b8a2c04e8edbe69310e26c6, type: 3}
       propertyPath: m_Name
       value: hide
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229178054137772383, guid: 7da8822c9b8a2c04e8edbe69310e26c6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7da8822c9b8a2c04e8edbe69310e26c6, type: 3}
@@ -1067,6 +1071,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -1451,6 +1456,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 1
   dis: 2.6
   pullSpeed: 1.2
@@ -1642,7 +1648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 105517838}
   - component: {fileID: 105517839}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1816,7 +1822,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112734008}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1832,11 +1838,11 @@ Light:
   m_GameObject: {fileID: 112734008}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.96374345, b: 0.7700249, a: 1}
-  m_Intensity: 5
-  m_Range: 9
+  m_Intensity: 6.2
+  m_Range: 11
   m_SpotAngle: 170
   m_InnerSpotAngle: 17
   m_CookieSize: 10
@@ -1872,7 +1878,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3319
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -1975,6 +1981,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -2538,6 +2545,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -2771,6 +2779,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -3004,6 +3013,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -3237,6 +3247,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -3411,6 +3422,49 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &163718707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163718709}
+  - component: {fileID: 163718708}
+  m_Layer: 0
+  m_Name: Occlusion Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!192 &163718708
+OcclusionArea:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163718707}
+  serializedVersion: 2
+  m_Size: {x: 67.943275, y: 26.551811, z: 74.14822}
+  m_Center: {x: -2.5605793, y: -9.618988, z: -3.7324762}
+  m_IsViewVolume: 1
+--- !u!4 &163718709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163718707}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.4, y: -171, z: 34.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 38
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &181790369
 GameObject:
   m_ObjectHideFlags: 0
@@ -3561,6 +3615,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 5ee3af09b76bf1849bf050f03cd8b720, type: 3}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -3885,7 +3940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 207668480}
   - component: {fileID: 207668481}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3930,7 +3985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 209278758}
   - component: {fileID: 209278759}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: stair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4060,7 +4115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 229100039}
   - component: {fileID: 229100040}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handrail (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4105,7 +4160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 233762758}
   - component: {fileID: 233762759}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4284,6 +4339,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -4332,6 +4388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 260850860}
   - component: {fileID: 260850861}
+  - component: {fileID: 260850862}
   m_Layer: 0
   m_Name: Light203
   m_TagString: Untagged
@@ -4403,7 +4460,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2881
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -4416,6 +4473,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &260850862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260850859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 2
+  Max: 8
+  distance: 20
 --- !u!1 &264065369
 GameObject:
   m_ObjectHideFlags: 0
@@ -4431,7 +4504,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 111
   m_IsActive: 1
 --- !u!4 &264065370
 Transform:
@@ -4564,6 +4637,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 5ee3af09b76bf1849bf050f03cd8b720, type: 3}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -4763,6 +4837,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hide
       objectReference: {fileID: 0}
+    - target: {fileID: 7229178054137772383, guid: 7da8822c9b8a2c04e8edbe69310e26c6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7da8822c9b8a2c04e8edbe69310e26c6, type: 3}
 --- !u!1 &269014303
@@ -4775,7 +4853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 269014304}
   - component: {fileID: 269014305}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4882,6 +4960,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 1
   dis: 2.6
   pullSpeed: 1.2
@@ -5237,6 +5316,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -5452,7 +5532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 309532490}
   - component: {fileID: 309532491}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: stair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5826,7 +5906,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &341725522
 Transform:
@@ -5836,7 +5916,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341725521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0025}
+  m_LocalPosition: {x: 0, y: -0, z: -0.0074}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5854,9 +5934,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.99996066, g: 1, b: 0.90943396, a: 1}
-  m_Intensity: 3
-  m_Range: 18
+  m_Color: {r: 0.7626914, g: 0.9482614, b: 0.9811321, a: 1}
+  m_Intensity: 14
+  m_Range: 7
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -5894,13 +5974,13 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0
+  m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1, y: 1, z: 0, w: 1}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -6277,7 +6357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 362607551}
   - component: {fileID: 362607552}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: stair (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6387,6 +6467,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -6640,6 +6721,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hide
       objectReference: {fileID: 0}
+    - target: {fileID: 7229178054137772383, guid: 7da8822c9b8a2c04e8edbe69310e26c6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7da8822c9b8a2c04e8edbe69310e26c6, type: 3}
 --- !u!4 &367702329 stripped
@@ -6706,6 +6791,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -6979,6 +7065,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -7027,7 +7114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 393789942}
   - component: {fileID: 393789943}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7121,6 +7208,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -7352,6 +7440,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 5ee3af09b76bf1849bf050f03cd8b720, type: 3}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -7517,7 +7606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 397487993}
   - component: {fileID: 397487994}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handrail (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7771,6 +7860,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -8002,6 +8092,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 5ee3af09b76bf1849bf050f03cd8b720, type: 3}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -8306,7 +8397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 414214976}
   - component: {fileID: 414214977}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8355,7 +8446,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &419116911
 Transform:
@@ -8515,6 +8606,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -8699,7 +8791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 444145533}
   - component: {fileID: 444145534}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: platform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8744,7 +8836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 458346096}
   - component: {fileID: 458346097}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9178,6 +9270,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -9307,6 +9400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 509744159}
   - component: {fileID: 509744160}
+  - component: {fileID: 509744161}
   m_Layer: 0
   m_Name: Light201
   m_TagString: Untagged
@@ -9322,7 +9416,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509744158}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.1299992, y: 5.7799997, z: -1.1469994}
+  m_LocalPosition: {x: 1.1299992, y: 5.779999, z: -1.1469994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9378,7 +9472,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2881
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -9391,6 +9485,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &509744161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509744158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 2
+  Max: 8
+  distance: 20
 --- !u!1 &510791752
 GameObject:
   m_ObjectHideFlags: 0
@@ -9401,6 +9511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 510791753}
   - component: {fileID: 510791754}
+  - component: {fileID: 510791755}
   m_Layer: 0
   m_Name: Light103
   m_TagString: Untagged
@@ -9472,7 +9583,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2881
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -9485,6 +9596,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &510791755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510791752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 2
+  Max: 8
+  distance: 20
 --- !u!1 &517647912
 GameObject:
   m_ObjectHideFlags: 0
@@ -9570,7 +9697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522544964}
   - component: {fileID: 522544965}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9708,7 +9835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 541625338}
   - component: {fileID: 541625339}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handrail (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9802,6 +9929,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -10244,7 +10372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 557260436}
   - component: {fileID: 557260437}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10335,7 +10463,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574326661}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10351,11 +10479,11 @@ Light:
   m_GameObject: {fileID: 574326661}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.96374345, b: 0.7700249, a: 1}
-  m_Intensity: 5.6
-  m_Range: 10
+  m_Intensity: 6.2
+  m_Range: 11
   m_SpotAngle: 170
   m_InnerSpotAngle: 17
   m_CookieSize: 10
@@ -10391,7 +10519,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3319
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -10495,6 +10623,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -10826,7 +10955,7 @@ GameObject:
   m_Component:
   - component: {fileID: 606378808}
   - component: {fileID: 606378809}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: stair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10903,7 +11032,7 @@ GameObject:
   m_Component:
   - component: {fileID: 612678512}
   - component: {fileID: 612678513}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: stair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10998,6 +11127,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -11213,6 +11343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 628487731}
   - component: {fileID: 628487730}
+  - component: {fileID: 628487732}
   m_Layer: 0
   m_Name: Light101
   m_TagString: Untagged
@@ -11269,7 +11400,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2881
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -11290,13 +11421,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628487729}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.1299992, y: 5.9660006, z: -1.1469994}
+  m_LocalPosition: {x: 1.1299992, y: 5.9660034, z: -1.1469994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2104889578}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &628487732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628487729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 2
+  Max: 8
+  distance: 20
 --- !u!1 &630454121
 GameObject:
   m_ObjectHideFlags: 0
@@ -11356,6 +11503,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -12066,6 +12214,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -12336,7 +12485,7 @@ GameObject:
   - component: {fileID: 661775465}
   - component: {fileID: 661775464}
   - component: {fileID: 661775463}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12379,7 +12528,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661775461}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -12509,6 +12658,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 5ee3af09b76bf1849bf050f03cd8b720, type: 3}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -12651,7 +12801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &670667150
 Transform:
   m_ObjectHideFlags: 0
@@ -12690,6 +12840,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 5ee3af09b76bf1849bf050f03cd8b720, type: 3}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -12852,6 +13003,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 246565053, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 960294135, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 960294135, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 960294137, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
       propertyPath: m_Size.x
       value: 11.626664
@@ -12872,13 +13035,57 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1232264819, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 2099058222, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 763268439020395240, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769177345967601473, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945888409893569559, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207915041613579733, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308499300150865197, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568770508969982795, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818102256936867277, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294090923776439019, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3754813350960746620, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
       propertyPath: m_Name
       value: Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754813350960746620, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956942534229688884, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4052390478265489412, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
       propertyPath: patorlPos.Array.data[0]
@@ -12936,6 +13143,10 @@ PrefabInstance:
       propertyPath: patorlPos.Array.data[13]
       value: 
       objectReference: {fileID: 1318317171}
+    - target: {fileID: 4409892505177749259, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4562171117906201286, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -12979,6 +13190,70 @@ PrefabInstance:
     - target: {fileID: 4562171117906201286, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4872177697434118907, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195294179132476417, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481018019704673930, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668034676731659266, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730615047418255022, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148602754138513382, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6317941959969635887, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6448883592092454930, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628366458684590806, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988819519183454755, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154955760629296266, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296683940207455307, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659312100472091277, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004089849768051927, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385942829258361527, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8730470234161687192, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd5b4cb59d3d22444b7d6e12c0577d4e, type: 3}
@@ -13316,6 +13591,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -13862,6 +14138,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -14046,7 +14323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 752776071}
   - component: {fileID: 752776072}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: stair (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14141,6 +14418,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -14703,6 +14981,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -15044,6 +15323,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -15266,7 +15546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: "\u5973\u4E3B\u4EBA\u7ED9\u4E86\u5973\u4F63\u6539\u8FC7\u81EA\u65B0\u7684\u673A\u4F1A\uFF0C\u5374\u6CA1\u60F3\u5230\u8FD9\u4F1A\u6210\u4E3A\u4E00\u79CD\u7F6A\u8FC7\uFF0C\u751A\u81F3\u5BB3\u4E86\u6240\u6709\u4EBA\u3002"
-  background: {fileID: 21300000, guid: e021fc40e0b84c44786f0acf0aa0a468, type: 3}
+  background: {fileID: 21300000, guid: 806a39ac963e150448c3bab0ee9f2c09, type: 3}
   targetCanvas: {fileID: 328620716}
   effectSpeed: 8
   isOpen: 0
@@ -15708,7 +15988,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793270044}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: -0, z: 0.0009}
+  m_LocalPosition: {x: 0, y: -0, z: -0.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15724,10 +16004,10 @@ Light:
   m_GameObject: {fileID: 793270044}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.96374345, b: 0.7700249, a: 1}
-  m_Intensity: 5.6
+  m_Intensity: 6.2
   m_Range: 10
   m_SpotAngle: 170
   m_InnerSpotAngle: 17
@@ -15764,7 +16044,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3319
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -15951,6 +16231,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -16913,6 +17194,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -17231,7 +17513,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &836015598
 Transform:
@@ -17387,7 +17669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 839536721}
   - component: {fileID: 839536722}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17654,6 +17936,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 1
   dis: 2.6
   pullSpeed: 1.2
@@ -17907,7 +18190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 888760135}
   - component: {fileID: 888760136}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18191,6 +18474,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -18207,7 +18491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 899593228}
   - component: {fileID: 899593229}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18331,6 +18615,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 5ee3af09b76bf1849bf050f03cd8b720, type: 3}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -18480,7 +18765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910001610}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00036}
+  m_LocalPosition: {x: 0, y: 0, z: -0.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18496,11 +18781,11 @@ Light:
   m_GameObject: {fileID: 910001610}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.96374345, b: 0.7700249, a: 1}
-  m_Intensity: 5.3
-  m_Range: 10
+  m_Intensity: 6.2
+  m_Range: 11
   m_SpotAngle: 170
   m_InnerSpotAngle: 17
   m_CookieSize: 10
@@ -18536,7 +18821,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3319
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -18643,6 +18928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 929720671}
   - component: {fileID: 929720672}
+  - component: {fileID: 929720673}
   m_Layer: 0
   m_Name: Light102
   m_TagString: Untagged
@@ -18714,7 +19000,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2881
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -18727,6 +19013,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &929720673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929720670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 2
+  Max: 8
+  distance: 20
 --- !u!1 &937966251
 GameObject:
   m_ObjectHideFlags: 0
@@ -18852,7 +19154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 960863813}
   - component: {fileID: 960863814}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19164,6 +19466,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -19476,7 +19779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1005531534}
   - component: {fileID: 1005531535}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: platform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19700,6 +20003,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -19892,7 +20196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1017560799
 Transform:
   m_ObjectHideFlags: 0
@@ -19931,6 +20235,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 5ee3af09b76bf1849bf050f03cd8b720, type: 3}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -20065,7 +20370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1021278928}
   - component: {fileID: 1021278929}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20148,7 +20453,7 @@ GameObject:
   - component: {fileID: 1035524622}
   - component: {fileID: 1035524621}
   - component: {fileID: 1035524620}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20191,7 +20496,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035524618}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -20278,7 +20583,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1050077757
 Transform:
@@ -20375,7 +20680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: "\u8FD9\u611A\u8822\u7684\u5973\u4F63\uFF0C\u5C45\u7136\u60F3\u7740\u9760\u8D4C\u535A\u53BB\u83B7\u5F97\u91D1\u94B1\uFF0C\u628A\u4E3B\u4EBA\u5BB6\u597D\u5FC3\u7ED9\u5979\u7684\u94B1\u90FD\u8F93\u5149\u4E86\u3002"
-  background: {fileID: 21300000, guid: e021fc40e0b84c44786f0acf0aa0a468, type: 3}
+  background: {fileID: 21300000, guid: 806a39ac963e150448c3bab0ee9f2c09, type: 3}
   targetCanvas: {fileID: 328620716}
   effectSpeed: 8
   isOpen: 0
@@ -20703,6 +21008,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -20887,7 +21193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1095219811}
   - component: {fileID: 1095219812}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: stair (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20933,6 +21239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1100190254}
   - component: {fileID: 1100190255}
+  - component: {fileID: 1100190256}
   m_Layer: 0
   m_Name: Light202
   m_TagString: Untagged
@@ -21004,7 +21311,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2881
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -21017,6 +21324,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1100190256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100190253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 2
+  Max: 8
+  distance: 20
 --- !u!1 &1105212701
 GameObject:
   m_ObjectHideFlags: 0
@@ -21076,6 +21399,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -21250,6 +21574,103 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1114149849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1114149850}
+  - component: {fileID: 1114149853}
+  - component: {fileID: 1114149852}
+  - component: {fileID: 1114149851}
+  m_Layer: 10
+  m_Name: Cube (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1114149850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114149849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1662, y: -0.02678, z: 0.0163}
+  m_LocalScale: {x: 0.011, y: 0.005, z: 0.11600468}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7285275756205928788}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1114149851
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114149849}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1114149852
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114149849}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: f0986b6765aa21f40a3b84eaf78f33d8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1114149853
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114149849}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1118222812
 GameObject:
   m_ObjectHideFlags: 0
@@ -21393,6 +21814,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -21581,7 +22003,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1121461729
 Transform:
@@ -21657,6 +22079,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -21890,6 +22313,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -22212,7 +22636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1154271028}
   - component: {fileID: 1154271029}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22532,6 +22956,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 1
   dis: 2.6
   pullSpeed: 1.2
@@ -22770,6 +23195,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -22909,6 +23335,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -22980,7 +23407,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 111
   m_IsActive: 1
 --- !u!4 &1178270377
 Transform:
@@ -23020,6 +23447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1178323146}
   - component: {fileID: 1178323147}
+  - component: {fileID: 1178323148}
   m_Layer: 0
   m_Name: Light301
   m_TagString: Untagged
@@ -23091,7 +23519,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2881
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -23104,6 +23532,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1178323148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178323145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 2
+  Max: 8
+  distance: 20
 --- !u!1 &1180875627
 GameObject:
   m_ObjectHideFlags: 0
@@ -23145,7 +23589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1182688240}
   - component: {fileID: 1182688241}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23239,6 +23683,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 1
   dis: 1.2
   pullSpeed: 1
@@ -23441,6 +23886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1195202718}
   - component: {fileID: 1195202719}
+  - component: {fileID: 1195202720}
   m_Layer: 0
   m_Name: Light304
   m_TagString: Untagged
@@ -23512,7 +23958,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2881
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -23525,6 +23971,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1195202720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195202717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 2
+  Max: 8
+  distance: 20
 --- !u!1 &1209786948
 GameObject:
   m_ObjectHideFlags: 0
@@ -23646,6 +24108,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -24356,7 +24819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1269747391}
   - component: {fileID: 1269747392}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24608,6 +25071,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -24918,7 +25382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1315075925}
   - component: {fileID: 1315075926}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: platform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24963,7 +25427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1318266588}
   - component: {fileID: 1318266589}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25119,6 +25583,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -25606,7 +26071,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 111
   m_IsActive: 1
 --- !u!4 &1337227084
 Transform:
@@ -25726,6 +26191,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -25959,6 +26425,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -26494,7 +26961,7 @@ GameObject:
   - component: {fileID: 1370287804}
   - component: {fileID: 1370287803}
   - component: {fileID: 1370287802}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26537,7 +27004,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370287800}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -26589,7 +27056,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1373784069}
   - component: {fileID: 1373784070}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26714,6 +27181,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -27596,7 +28064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1427113819}
   - component: {fileID: 1427113820}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: stair (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27902,6 +28370,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -28592,6 +29061,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -28838,6 +29308,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 1
   dis: 2.6
   pullSpeed: 1.2
@@ -29175,6 +29646,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -29770,7 +30242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1519101638}
   - component: {fileID: 1519101639}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29862,6 +30334,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -30026,7 +30499,7 @@ GameObject:
   - component: {fileID: 1542721410}
   - component: {fileID: 1542721409}
   - component: {fileID: 1542721408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30069,7 +30542,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542721406}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -30170,6 +30643,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -30568,6 +31042,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -30696,6 +31171,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -30929,6 +31405,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -31160,6 +31637,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 5ee3af09b76bf1849bf050f03cd8b720, type: 3}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -31294,7 +31772,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1572163629}
   - component: {fileID: 1572163630}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31343,7 +31821,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1575954636
 Transform:
@@ -31385,7 +31863,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580548911}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31401,16 +31879,16 @@ Light:
   m_GameObject: {fileID: 1580548911}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.96374345, b: 0.7700249, a: 1}
-  m_Intensity: 5
+  m_Intensity: 6.2
   m_Range: 10
   m_SpotAngle: 170
   m_InnerSpotAngle: 17
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -31441,9 +31919,9 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3319
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -31679,7 +32157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1600877684}
   - component: {fileID: 1600877685}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: platform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31809,7 +32287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1610065458}
   - component: {fileID: 1610065459}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: stair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31904,6 +32382,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -32137,6 +32616,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -32723,7 +33203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1652413056}
   - component: {fileID: 1652413057}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32994,6 +33474,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -33340,6 +33821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1701282483}
   - component: {fileID: 1701282484}
+  - component: {fileID: 1701282485}
   m_Layer: 0
   m_Name: Light104
   m_TagString: Untagged
@@ -33411,7 +33893,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2881
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -33424,6 +33906,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1701282485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701282482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 2
+  Max: 8
+  distance: 20
 --- !u!1 &1701397557
 GameObject:
   m_ObjectHideFlags: 0
@@ -33666,6 +34164,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -34098,6 +34597,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -34283,6 +34783,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2406045917199043214, guid: f625e77cae463124084be0084ed09c41, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 47926a93602e93d4d926d4677ae0528d, type: 2}
     - target: {fileID: 2968918798990755497, guid: f625e77cae463124084be0084ed09c41, type: 3}
       propertyPath: m_Name
       value: player
@@ -34359,6 +34863,10 @@ PrefabInstance:
       propertyPath: footsteps_Default
       value: 
       objectReference: {fileID: 8300000, guid: bbdd84cad3b5c5242900a9a305516419, type: 3}
+    - target: {fileID: 5609486451454963219, guid: f625e77cae463124084be0084ed09c41, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 47926a93602e93d4d926d4677ae0528d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f625e77cae463124084be0084ed09c41, type: 3}
 --- !u!1 &1730169033
@@ -34403,7 +34911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1731312944}
   - component: {fileID: 1731312945}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34479,7 +34987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1751543996}
   - component: {fileID: 1751543997}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34707,7 +35215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1753882255}
   - component: {fileID: 1753882256}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35178,6 +35686,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -35455,6 +35964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1784608545}
   - component: {fileID: 1784608546}
+  - component: {fileID: 1784608547}
   m_Layer: 0
   m_Name: Light303
   m_TagString: Untagged
@@ -35526,7 +36036,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2881
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -35539,6 +36049,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1784608547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784608544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 2
+  Max: 8
+  distance: 20
 --- !u!1 &1787721317
 GameObject:
   m_ObjectHideFlags: 0
@@ -35564,7 +36090,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787721317}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35580,11 +36106,11 @@ Light:
   m_GameObject: {fileID: 1787721317}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.96374345, b: 0.7700249, a: 1}
-  m_Intensity: 5
-  m_Range: 9
+  m_Intensity: 6.2
+  m_Range: 10.8
   m_SpotAngle: 170
   m_InnerSpotAngle: 17
   m_CookieSize: 10
@@ -35620,7 +36146,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3319
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -35827,7 +36353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812574466}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35843,11 +36369,11 @@ Light:
   m_GameObject: {fileID: 1812574466}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.96374345, b: 0.7700249, a: 1}
-  m_Intensity: 5
-  m_Range: 10
+  m_Intensity: 6.2
+  m_Range: 10.8
   m_SpotAngle: 170
   m_InnerSpotAngle: 17
   m_CookieSize: 10
@@ -35883,7 +36409,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3319
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -36057,7 +36583,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 111
   m_IsActive: 1
 --- !u!4 &1840844492
 Transform:
@@ -36096,7 +36622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1847883858}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Stair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36302,7 +36828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1859759007}
   - component: {fileID: 1859759008}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: stair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36378,6 +36904,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1865288423}
+  - component: {fileID: 1865288424}
   m_Layer: 0
   m_Name: Door101
   m_TagString: Untagged
@@ -36402,6 +36929,16 @@ Transform:
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!41 &1865288424
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865288422}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!1 &1877617783
 GameObject:
   m_ObjectHideFlags: 0
@@ -36557,6 +37094,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hide
       objectReference: {fileID: 0}
+    - target: {fileID: 7229178054137772383, guid: 7da8822c9b8a2c04e8edbe69310e26c6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7da8822c9b8a2c04e8edbe69310e26c6, type: 3}
 --- !u!4 &1884123181 stripped
@@ -36573,7 +37114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1884810521}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Stair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36661,15 +37202,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 296162498361517028, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 296162498361517028, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 296162498361517028, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 296162498361517028, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -36685,16 +37226,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 296162498361517035, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
       propertyPath: far clip plane
-      value: 23
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 296162498361517035, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
       propertyPath: m_OcclusionCulling
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 296162498361517035, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.1509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 296162498361517035, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.1509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 296162498361517035, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.1509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 296162498361517038, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_Radius
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 296162498361517038, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 296162498361517040, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 296162498361517041, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 296162498361517041, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: startDistance
+      value: 330
       objectReference: {fileID: 0}
     - target: {fileID: 296162498361517044, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 366305909}
+    - target: {fileID: 296162498361517044, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 296162498361517044, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
       propertyPath: deathEvent
       value: 
@@ -36703,6 +37280,18 @@ PrefabInstance:
       propertyPath: Interaction
       value: 
       objectReference: {fileID: 1421515652}
+    - target: {fileID: 296162498361517045, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 296162498361517046, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 296162498361517047, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6780016435154094660, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -37128,6 +37717,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -37487,6 +38077,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -37828,7 +38419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: "\u4ECA\u5929\u5C0F\u4E3B\u4EBA\u7684\u670B\u53CB\u6765\u627E\u4ED6\u73A9\u4E86\uFF0C\u53EF\u662F\u504F\u504F\u8981\u73A9\u6316\u571F\u6E38\u620F\uFF0C\u8FD8\u6316\u51FA\u4E86\u534A\u4E2A\u6708\u524D\u5931\u8E2A\u7684\u732B\u3002\u8FD9\u4E0B\u5C0F\u4E3B\u4EBA\u53C8\u8981\u95F7\u95F7\u4E0D\u4E50\u4E86\u3002"
-  background: {fileID: 21300000, guid: e021fc40e0b84c44786f0acf0aa0a468, type: 3}
+  background: {fileID: 21300000, guid: 806a39ac963e150448c3bab0ee9f2c09, type: 3}
   targetCanvas: {fileID: 328620716}
   effectSpeed: 8
   isOpen: 0
@@ -38155,6 +38746,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -38339,6 +38931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1949714968}
   - component: {fileID: 1949714969}
+  - component: {fileID: 1949714970}
   m_Layer: 0
   m_Name: Light204
   m_TagString: Untagged
@@ -38410,7 +39003,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2881
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -38423,6 +39016,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1949714970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949714967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 2
+  Max: 8
+  distance: 20
 --- !u!1 &1950601721
 GameObject:
   m_ObjectHideFlags: 0
@@ -38694,6 +39303,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -39026,6 +39636,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 1
   dis: 1.2
   pullSpeed: 1
@@ -39347,6 +39958,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -39546,7 +40158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020495706}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000680046}
+  m_LocalPosition: {x: 0, y: 0, z: -0.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39562,10 +40174,10 @@ Light:
   m_GameObject: {fileID: 2020495706}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.96374345, b: 0.7700249, a: 1}
-  m_Intensity: 5.6
+  m_Intensity: 6.2
   m_Range: 10
   m_SpotAngle: 170
   m_InnerSpotAngle: 17
@@ -39602,7 +40214,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3319
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -39674,6 +40286,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0.75
   pullSpeed: 1.2
@@ -39858,7 +40471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2032241553}
   - component: {fileID: 2032241554}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handrail (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39952,6 +40565,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -40327,7 +40941,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2057473031}
   - component: {fileID: 2057473032}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40440,6 +41054,10 @@ PrefabInstance:
     - target: {fileID: 7229178054137772383, guid: 7da8822c9b8a2c04e8edbe69310e26c6, type: 3}
       propertyPath: m_Name
       value: hide
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229178054137772383, guid: 7da8822c9b8a2c04e8edbe69310e26c6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7da8822c9b8a2c04e8edbe69310e26c6, type: 3}
@@ -40979,6 +41597,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -41207,7 +41826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2111337329}
   - component: {fileID: 2111337330}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: handrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41299,7 +41918,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -41309,37 +41928,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -41427,6 +42037,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 264925144}
   otherDoorCollider: {fileID: 2116182530}
+  portal: {fileID: 1865288424}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -41604,6 +42215,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1.2
@@ -41945,6 +42557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2133098539}
   - component: {fileID: 2133098540}
+  - component: {fileID: 2133098541}
   m_Layer: 0
   m_Name: Light302
   m_TagString: Untagged
@@ -42016,7 +42629,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2881
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -42029,6 +42642,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2133098541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133098538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 2
+  Max: 8
+  distance: 20
 --- !u!1 &2135726313
 GameObject:
   m_ObjectHideFlags: 0
@@ -43282,7 +43911,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4613627617696465323}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -43430,7 +44059,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851589451624137754}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -43698,7 +44327,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7877002485463591966}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -44076,7 +44705,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4310035478427516035}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -44371,7 +45000,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8096383808920197876}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -45890,7 +46519,7 @@ GameObject:
   - component: {fileID: 279626721559434847}
   - component: {fileID: 2162519245047874451}
   - component: {fileID: 2162519245047874452}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: light.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46126,7 +46755,7 @@ MonoBehaviour:
   - Task3
   - Task4
   - Task5
-  noTaskObj: 0000000000000000000000000200000001000000
+  noTaskObj: 0300000000000000000000000200000001000000
   taskList: 
 --- !u!33 &925690059600015088
 MeshFilter:
@@ -46275,7 +46904,7 @@ GameObject:
   - component: {fileID: 8291846566638633166}
   - component: {fileID: 215837666588364986}
   - component: {fileID: 5115368317744788892}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: handrail.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46485,7 +47114,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5806175153283886926}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -46767,7 +47396,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5700185764649875047}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -46812,7 +47441,7 @@ GameObject:
   - component: {fileID: 1509256289046832224}
   - component: {fileID: 492112242741466145}
   - component: {fileID: 3896390010405920194}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: handrail.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47422,7 +48051,7 @@ GameObject:
   - component: {fileID: 1969171386776561651}
   - component: {fileID: 1487480612663640062}
   - component: {fileID: 4385950840370673188}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: book.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47778,7 +48407,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2688388446412860669}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -48526,6 +49155,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995733924364506}
   otherDoorCollider: {fileID: 1525995732035358464}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -48569,7 +49199,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -48579,37 +49209,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -48887,6 +49508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995732097193062}
+  - component: {fileID: 1525995732097193064}
   m_Layer: 0
   m_Name: Door304
   m_TagString: Untagged
@@ -48894,6 +49516,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &1525995732097193064
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995732097193063}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!23 &1525995732107233158
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49049,6 +49681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995732135566350}
+  - component: {fileID: 1525995732135566352}
   m_Layer: 0
   m_Name: Door204_1
   m_TagString: Untagged
@@ -49056,6 +49689,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &1525995732135566352
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995732135566351}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!4 &1525995732174826672
 Transform:
   m_ObjectHideFlags: 0
@@ -49148,6 +49791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995732178361495}
+  - component: {fileID: 1525995732178361496}
   m_Layer: 0
   m_Name: Door304_1
   m_TagString: Untagged
@@ -49172,6 +49816,16 @@ Transform:
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!41 &1525995732178361496
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995732178361494}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!4 &1525995732199805840
 Transform:
   m_ObjectHideFlags: 0
@@ -49347,6 +50001,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995732236526405}
+  - component: {fileID: 1525995732236526406}
   m_Layer: 0
   m_Name: Door202
   m_TagString: Untagged
@@ -49371,6 +50026,16 @@ Transform:
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!41 &1525995732236526406
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995732236526404}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!4 &1525995732251210384
 Transform:
   m_ObjectHideFlags: 0
@@ -49489,6 +50154,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995734169025700}
   otherDoorCollider: {fileID: 1525995732259041924}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -49552,7 +50218,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -49562,37 +50228,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -49667,6 +50324,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995732264944361}
+  - component: {fileID: 1525995732264944362}
   m_Layer: 0
   m_Name: Door204
   m_TagString: Untagged
@@ -49691,6 +50349,16 @@ Transform:
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!41 &1525995732264944362
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995732264944360}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!4 &1525995732275579434
 Transform:
   m_ObjectHideFlags: 0
@@ -49717,6 +50385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995732275579434}
+  - component: {fileID: 1525995732275579436}
   m_Layer: 0
   m_Name: Door201_1
   m_TagString: Untagged
@@ -49724,6 +50393,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &1525995732275579436
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995732275579435}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!33 &1525995732283380643
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -49816,6 +50495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995732320298469}
+  - component: {fileID: 1525995732320298470}
   m_Layer: 0
   m_Name: Door302_1
   m_TagString: Untagged
@@ -49840,6 +50520,16 @@ Transform:
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!41 &1525995732320298470
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995732320298468}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!65 &1525995732365802165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49908,6 +50598,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995733710156121}
   otherDoorCollider: {fileID: 1525995732382138240}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -49968,7 +50659,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -49978,37 +50669,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -50158,6 +50840,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995733740140849}
   otherDoorCollider: {fileID: 1525995732421555992}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -50218,7 +50901,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -50228,37 +50911,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -50375,6 +51049,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995733795518888}
   otherDoorCollider: {fileID: 1525995732430796688}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -50438,7 +51113,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -50448,37 +51123,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -50802,7 +51468,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -50812,37 +51478,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -50950,6 +51607,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995733841086074}
   otherDoorCollider: {fileID: 1525995732521454500}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -51010,7 +51668,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -51020,37 +51678,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -51141,6 +51790,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995733900603157}
   otherDoorCollider: {fileID: 1525995732526441166}
+  portal: {fileID: 1525995732275579436}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -51265,6 +51915,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995732543445403}
+  - component: {fileID: 1525995732543445404}
   m_Layer: 0
   m_Name: Door104_1
   m_TagString: Untagged
@@ -51289,6 +51940,16 @@ Transform:
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!41 &1525995732543445404
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995732543445402}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!4 &1525995732549921264
 Transform:
   m_ObjectHideFlags: 0
@@ -51326,7 +51987,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -51336,37 +51997,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -51474,6 +52126,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995733877942230}
   otherDoorCollider: {fileID: 1525995732549921296}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -51731,6 +52384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995732623135622}
+  - component: {fileID: 1525995732623135624}
   m_Layer: 0
   m_Name: Door101_1
   m_TagString: Untagged
@@ -51738,6 +52392,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &1525995732623135624
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995732623135623}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!1 &1525995732653259953
 GameObject:
   m_ObjectHideFlags: 0
@@ -51847,6 +52511,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995732682029412}
+  - component: {fileID: 1525995732682029414}
   m_Layer: 0
   m_Name: Door103
   m_TagString: Untagged
@@ -51854,6 +52519,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &1525995732682029414
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995732682029413}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!65 &1525995732684138288
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51941,7 +52616,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -51951,37 +52626,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -52072,6 +52738,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995733466824529}
   otherDoorCollider: {fileID: 1525995732692447882}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -52213,6 +52880,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995732718229352}
+  - component: {fileID: 1525995732718229354}
   m_Layer: 0
   m_Name: Door201
   m_TagString: Untagged
@@ -52220,6 +52888,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &1525995732718229354
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995732718229353}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!4 &1525995732722057584
 Transform:
   m_ObjectHideFlags: 0
@@ -52722,7 +53400,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -52732,37 +53410,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -52853,6 +53522,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995733149808313}
   otherDoorCollider: {fileID: 1525995732875606882}
+  portal: {fileID: 1525995732623135624}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -52953,6 +53623,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995733224938587}
   otherDoorCollider: {fileID: 1525995732933956223}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -52993,7 +53664,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -53003,37 +53674,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -53161,6 +53823,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995732944378478}
+  - component: {fileID: 1525995732944378480}
   m_Layer: 0
   m_Name: Door202_1
   m_TagString: Untagged
@@ -53168,6 +53831,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &1525995732944378480
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995732944378479}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!65 &1525995732949665800
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53318,7 +53991,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -53328,37 +54001,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -53469,6 +54133,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995733256958551}
   otherDoorCollider: {fileID: 1525995732969127824}
+  portal: {fileID: 1525995732718229354}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -53688,7 +54353,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -53698,37 +54363,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -53839,6 +54495,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995732856977183}
   otherDoorCollider: {fileID: 1525995733102869192}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -53880,6 +54537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995733121646653}
+  - component: {fileID: 1525995733121646654}
   m_Layer: 0
   m_Name: Door203
   m_TagString: Untagged
@@ -53904,6 +54562,16 @@ Transform:
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!41 &1525995733121646654
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995733121646652}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!33 &1525995733127731224
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -54070,7 +54738,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -54080,37 +54748,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -54218,6 +54877,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995732907652906}
   otherDoorCollider: {fileID: 1525995733186050804}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -54272,6 +54932,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995732949665802}
   otherDoorCollider: {fileID: 1525995733211285040}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -54315,7 +54976,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -54325,37 +54986,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -54450,6 +55102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995733222818317}
+  - component: {fileID: 1525995733222818318}
   m_Layer: 0
   m_Name: Door102_1
   m_TagString: Untagged
@@ -54474,6 +55127,16 @@ Transform:
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!41 &1525995733222818318
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995733222818316}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!65 &1525995733224938585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54767,6 +55430,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995732587128066}
   otherDoorCollider: {fileID: 1525995733373037352}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -54810,7 +55474,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -54820,37 +55484,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -55045,6 +55700,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995733387825696}
+  - component: {fileID: 1525995733387825698}
   m_Layer: 0
   m_Name: Door302
   m_TagString: Untagged
@@ -55052,6 +55708,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &1525995733387825698
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995733387825697}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!33 &1525995733391524918
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -55128,7 +55794,7 @@ GameObject:
   - component: {fileID: 1525995733391524920}
   - component: {fileID: 1525995733391524918}
   - component: {fileID: 1525995733391524919}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55310,6 +55976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995733438468629}
+  - component: {fileID: 1525995733438468630}
   m_Layer: 0
   m_Name: Door301_1
   m_TagString: Untagged
@@ -55334,6 +56001,16 @@ Transform:
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!41 &1525995733438468630
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995733438468628}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!4 &1525995733466824528
 Transform:
   m_ObjectHideFlags: 0
@@ -55417,7 +56094,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -55427,37 +56104,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -55565,6 +56233,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995732684138290}
   otherDoorCollider: {fileID: 1525995733475289836}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -55676,6 +56345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995733497310517}
+  - component: {fileID: 1525995733497310518}
   m_Layer: 0
   m_Name: Door104
   m_TagString: Untagged
@@ -55700,6 +56370,16 @@ Transform:
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!41 &1525995733497310518
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995733497310516}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!1 &1525995733506284936
 GameObject:
   m_ObjectHideFlags: 0
@@ -55892,7 +56572,7 @@ GameObject:
   - component: {fileID: 1525995733553856726}
   - component: {fileID: 1525995733553856728}
   - component: {fileID: 1525995733553856729}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56054,6 +56734,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995732384007423}
   otherDoorCollider: {fileID: 1525995733707836123}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -56094,7 +56775,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -56104,37 +56785,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -56303,7 +56975,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -56313,37 +56985,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -56454,6 +57117,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995732365802167}
   otherDoorCollider: {fileID: 1525995733726328688}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -56558,6 +57222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995733743045418}
+  - component: {fileID: 1525995733743045420}
   m_Layer: 0
   m_Name: Door301
   m_TagString: Untagged
@@ -56565,6 +57230,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &1525995733743045420
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995733743045419}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!23 &1525995733767768772
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -56670,6 +57345,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995732455702611}
   otherDoorCollider: {fileID: 1525995733770096247}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -56710,7 +57386,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -56720,37 +57396,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -57099,6 +57766,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995732488673288}
   otherDoorCollider: {fileID: 1525995733807257136}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -57162,7 +57830,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -57172,37 +57840,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -57349,6 +58008,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995732511306214}
   otherDoorCollider: {fileID: 1525995733850865604}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -57392,7 +58052,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -57402,37 +58062,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -57848,6 +58499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995733978226568}
+  - component: {fileID: 1525995733978226570}
   m_Layer: 0
   m_Name: Door203_1
   m_TagString: Untagged
@@ -57855,6 +58507,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &1525995733978226570
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995733978226569}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!4 &1525995733992776128
 Transform:
   m_ObjectHideFlags: 0
@@ -57881,6 +58543,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995733992776128}
+  - component: {fileID: 1525995733992776130}
   m_Layer: 0
   m_Name: Door303
   m_TagString: Untagged
@@ -57888,6 +58551,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &1525995733992776130
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995733992776129}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!23 &1525995734012580278
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -58012,7 +58685,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 30
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -58022,37 +58695,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.13333334
+      time: 0.5
       value: 1
-      inSlope: -7.5029984
-      outSlope: -7.5029984
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.26666668
-      value: 0.5
-      inSlope: -1.8757496
-      outSlope: -1.8757496
+      time: 0.89701676
+      value: 0.6160617
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.53333336
-      value: 0.25
-      inSlope: -0.4689374
-      outSlope: -0.4689374
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.13338663
-      outSlope: -0.13338663
+      inSlope: -2
+      outSlope: -2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -58143,6 +58807,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 8300000, guid: 411534ca09f4ac54ba4cc707b6594df7, type: 3}
   otherOneDoor: {fileID: 1525995732130098709}
   otherDoorCollider: {fileID: 1525995734028542926}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -58251,7 +58916,7 @@ GameObject:
   - component: {fileID: 1525995734031800045}
   - component: {fileID: 1525995734031800043}
   - component: {fileID: 1525995734031800044}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58367,6 +59032,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995734056084844}
+  - component: {fileID: 1525995734056084846}
   m_Layer: 0
   m_Name: Door103_1
   m_TagString: Untagged
@@ -58374,6 +59040,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &1525995734056084846
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995734056084845}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!23 &1525995734062774496
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -58466,6 +59142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995734092725559}
+  - component: {fileID: 1525995734092725560}
   m_Layer: 0
   m_Name: Door303_1
   m_TagString: Untagged
@@ -58490,6 +59167,16 @@ Transform:
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!41 &1525995734092725560
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995734092725558}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!4 &1525995734113224502
 Transform:
   m_ObjectHideFlags: 0
@@ -58584,7 +59271,7 @@ GameObject:
   - component: {fileID: 1525995734121779715}
   - component: {fileID: 1525995734121779717}
   - component: {fileID: 1525995734121779714}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58665,6 +59352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525995734136870105}
+  - component: {fileID: 1525995734136870106}
   m_Layer: 0
   m_Name: Door102
   m_TagString: Untagged
@@ -58689,6 +59377,16 @@ Transform:
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!41 &1525995734136870106
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525995734136870104}
+  m_Open: 0
+  m_Center: {x: 0.04339814, y: 0.0501709, z: 0.00061273575}
+  m_Size: {x: 0.41969156, y: 4.2774963, z: 4.081336}
 --- !u!33 &1525995734142095184
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -59131,7 +59829,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3332298096880310924}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 9.687491, y: 8.752508, z: 10.713194}
+  m_LocalPosition: {x: 9.687491, y: 8.752508, z: 9.97}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -59514,7 +60212,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6225499501274592022}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -60347,7 +61045,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4306267485229552074}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -60390,7 +61088,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6085247591125661266}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -60494,7 +61192,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3004333554606883887}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -60806,7 +61504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4202090991086228961}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -13.110462, y: 2.5420837, z: 31.28904}
+  m_LocalPosition: {x: -12.44, y: 2.5420837, z: 31.28904}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -60826,7 +61524,7 @@ GameObject:
   - component: {fileID: 8398687713144820242}
   - component: {fileID: 7510060306005553099}
   - component: {fileID: 8398687713144820243}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61164,6 +61862,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  lightning: 1
   speed: 6
   minGapTime: 2
   maxGapTime: 4
@@ -61344,7 +62043,8 @@ GameObject:
   - component: {fileID: 4829012632149911920}
   - component: {fileID: 5716227149635580400}
   - component: {fileID: 3547317972826956553}
-  m_Layer: 0
+  - component: {fileID: 5716227149635580401}
+  m_Layer: 10
   m_Name: light.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61793,7 +62493,7 @@ GameObject:
   - component: {fileID: 7285275756205928788}
   - component: {fileID: 1240548149879167730}
   - component: {fileID: 3925522190187959551}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: corridor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61971,7 +62671,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3332298096880310924}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -62855,7 +63555,7 @@ GameObject:
   - component: {fileID: 8722215033750042187}
   - component: {fileID: 8456510461136711371}
   - component: {fileID: 807564755851082802}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: light.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62964,6 +63664,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -63291,7 +63992,7 @@ GameObject:
   - component: {fileID: 5954030189739897015}
   - component: {fileID: 561837531233233900}
   - component: {fileID: 1338804029179174005}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: rug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63309,7 +64010,7 @@ GameObject:
   - component: {fileID: 3618680456875550498}
   - component: {fileID: 2201661849403425706}
   - component: {fileID: 8550034902563246514}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: book1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63578,7 +64279,7 @@ GameObject:
   - component: {fileID: 1220127957704985748}
   - component: {fileID: 3077661872462283831}
   - component: {fileID: 7276048488062443999}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63697,7 +64398,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4416524033604345823}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -63928,7 +64629,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5580073819802261670}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -64125,7 +64826,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794488501414471094}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -64211,7 +64912,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7956853177051138703}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -64402,7 +65103,7 @@ GameObject:
   - component: {fileID: 1465978012218062337}
   - component: {fileID: 3728070601581691595}
   - component: {fileID: 3728070601581691596}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: out wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64969,7 +65670,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7409596703060863901}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -65313,7 +66014,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8241860536817620433}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -65647,7 +66348,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653883106971415959}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -65857,7 +66558,7 @@ GameObject:
   - component: {fileID: 2393817437843200400}
   - component: {fileID: 3332298096880310926}
   - component: {fileID: 3332298096880310925}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: light.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65902,6 +66603,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  lightning: 1
   speed: 4
   minGapTime: 3
   maxGapTime: 4
@@ -66284,7 +66986,7 @@ GameObject:
   - component: {fileID: 1042682201928277737}
   - component: {fileID: 8008215469394190100}
   - component: {fileID: 7833105910605053587}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bonsai2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66371,7 +67073,7 @@ GameObject:
   - component: {fileID: 7587457946173825693}
   - component: {fileID: 3042747177554492967}
   - component: {fileID: 7002836912406637618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: book.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66528,7 +67230,7 @@ GameObject:
   - component: {fileID: 8772936559023925260}
   - component: {fileID: 8772936559023925261}
   - component: {fileID: 8772936559023925262}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66564,7 +67266,7 @@ GameObject:
   - component: {fileID: 2417510412560147637}
   - component: {fileID: 446666093836622259}
   - component: {fileID: 8967936298439614983}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66718,7 +67420,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7358401340110403427}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -66971,7 +67673,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2164864581056332520}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -67764,7 +68466,7 @@ GameObject:
   - component: {fileID: 6168561633701567671}
   - component: {fileID: 6578300402861851357}
   - component: {fileID: 8594751899834061701}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: photo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67810,7 +68512,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2935282655399584542}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -68216,7 +68918,7 @@ GameObject:
   - component: {fileID: 782806252572781414}
   - component: {fileID: 7035328879180766781}
   - component: {fileID: 2697070213231078017}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: handrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68347,7 +69049,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7944737924153736991}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -68424,7 +69126,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621586776760290704}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -69525,6 +70227,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -69875,7 +70578,7 @@ GameObject:
   - component: {fileID: 9057734779836836792}
   - component: {fileID: 9057734779836836794}
   - component: {fileID: 9057734779836836793}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: light.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70131,7 +70834,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4035623388296586453}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -70551,7 +71254,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253994864714240046}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -70756,7 +71459,7 @@ GameObject:
   - component: {fileID: 3891520857012831589}
   - component: {fileID: 121225609371781824}
   - component: {fileID: 2759115875718659594}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: out wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71017,6 +71720,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -71076,7 +71780,8 @@ GameObject:
   - component: {fileID: 7085107712523348941}
   - component: {fileID: 2373311541412911718}
   - component: {fileID: 7480513704406789582}
-  m_Layer: 0
+  - component: {fileID: 7480513704406789583}
+  m_Layer: 10
   m_Name: light.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71435,7 +72140,7 @@ GameObject:
   - component: {fileID: 3561839417794568107}
   - component: {fileID: 347092422847120863}
   - component: {fileID: 266821373254033309}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: book.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72589,6 +73294,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -73318,7 +74024,7 @@ GameObject:
   - component: {fileID: 1271587268661673957}
   - component: {fileID: 8356887750788320868}
   - component: {fileID: 8220398209189043461}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: light.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73650,7 +74356,7 @@ GameObject:
   - component: {fileID: 7849047026213821170}
   - component: {fileID: 2424355023285312632}
   - component: {fileID: 7913893808239783987}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: light.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73697,7 +74403,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573583237676285133}
-  m_Mesh: {fileID: -4329849257250163037, guid: e3198eaf7f9211c4ab69e28ef12b14f9, type: 3}
+  m_Mesh: {fileID: -6692290496178104961, guid: 1d03b6de9566215448ceabdc803b27d0, type: 3}
 --- !u!23 &5277700471644020479
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -74604,7 +75310,7 @@ GameObject:
   - component: {fileID: 7690770317724996979}
   - component: {fileID: 3166550070163477615}
   - component: {fileID: 2812047118239336406}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: light.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74782,7 +75488,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2553226744959230909}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -74987,7 +75693,7 @@ GameObject:
   - component: {fileID: 8604962064986375398}
   - component: {fileID: 3113942192359755262}
   - component: {fileID: 1057767605858539973}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: rug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75017,6 +75723,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2164864581056332520}
   m_Mesh: {fileID: 510610741022476986, guid: 3fd792e10bf9f544c9cfed9f41d063ba, type: 3}
+--- !u!114 &5716227149635580401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2164864581056332520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 1
+  Max: 9
+  distance: 20
 --- !u!1001 &5716893056123316190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75885,7 +76607,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7775675264949492075}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -76267,6 +76989,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1.3
   pullSpeed: 1
@@ -76897,6 +77620,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1.7
   pullSpeed: 1.2
@@ -77289,7 +78013,7 @@ GameObject:
   - component: {fileID: 881290206168637511}
   - component: {fileID: 2725804287302389801}
   - component: {fileID: 9191527404503702467}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: light.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78181,7 +78905,7 @@ GameObject:
   - component: {fileID: 250879116807468133}
   - component: {fileID: 2336480482110691673}
   - component: {fileID: 8479844474422960522}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: rug.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78435,7 +79159,7 @@ GameObject:
   - component: {fileID: 9070165159985993314}
   - component: {fileID: 3501499831766192360}
   - component: {fileID: 8998497695015566499}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: light.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78804,7 +79528,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9169064512158002566}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -79081,6 +79805,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1.3
   pullSpeed: 1
@@ -80736,7 +81461,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3454252073306219112}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -80892,6 +81617,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1
@@ -81360,7 +82086,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4492680565223900078}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 29.813759, y: 2.5420837, z: 31.28904}
+  m_LocalPosition: {x: 29, y: 2.5420837, z: 31.28904}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -81733,6 +82459,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 1
   dis: 1.2
   pullSpeed: 1
@@ -82239,7 +82966,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3834504680109130082}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -82283,7 +83010,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2734096456413042413}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -82403,6 +83130,7 @@ Transform:
   - {fileID: 1370287801}
   - {fileID: 1542721407}
   - {fileID: 661775462}
+  - {fileID: 1114149850}
   m_Father: {fileID: 543450653053451254}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82669,7 +83397,7 @@ GameObject:
   - component: {fileID: 760755634739992460}
   - component: {fileID: 2225204896854009546}
   - component: {fileID: 3507015840073322429}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: book.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82713,7 +83441,7 @@ GameObject:
   - component: {fileID: 4806151404185696311}
   - component: {fileID: 8254529260016888538}
   - component: {fileID: 4472085330309818422}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: handrail.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82833,7 +83561,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 111
   m_IsActive: 1
 --- !u!23 &7413251160064837132
 MeshRenderer:
@@ -83165,7 +83893,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4492680565223900078}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -83200,6 +83928,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7480513704406789583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4492680565223900078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b56be110c1ab64f95ea1220bb64cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 0}
+  Min: 1
+  Max: 9
+  distance: 20
 --- !u!1 &7486098622455043047
 GameObject:
   m_ObjectHideFlags: 0
@@ -83854,7 +84598,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2726857866415650806}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -84569,7 +85313,7 @@ GameObject:
   - component: {fileID: 663917203580127995}
   - component: {fileID: 1282812810359626833}
   - component: {fileID: 5942768721397706872}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: book.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85098,6 +85842,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1.3
   pullSpeed: 1
@@ -85576,7 +86321,7 @@ GameObject:
   - component: {fileID: 3859970537849958903}
   - component: {fileID: 7944737924153736992}
   - component: {fileID: 7944737924153736993}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: light.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85621,6 +86366,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  lightning: 1
   speed: 5
   minGapTime: 3
   maxGapTime: 6
@@ -85758,7 +86504,7 @@ GameObject:
   - component: {fileID: 7031077908002159171}
   - component: {fileID: 7473033820234429434}
   - component: {fileID: 2867491656867349883}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: book.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85933,6 +86679,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -85981,7 +86728,7 @@ GameObject:
   - component: {fileID: 860020062311395600}
   - component: {fileID: 1146215024512735834}
   - component: {fileID: 8990873840196055187}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: handrail.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86405,7 +87152,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4616793484589928481}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -86654,6 +87401,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1.3
   pullSpeed: 1
@@ -87100,7 +87848,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5161991975565792346}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -87282,6 +88030,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 1
   dis: 1.2
   pullSpeed: 1
@@ -87424,7 +88173,7 @@ GameObject:
   - component: {fileID: 3192012503789685174}
   - component: {fileID: 8914461133915653949}
   - component: {fileID: 8914461133915653948}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: light.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87526,6 +88275,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -87702,6 +88452,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1.7
   pullSpeed: 1.2
@@ -87935,6 +88686,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1
@@ -88119,7 +88871,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8198478933029325817}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -88426,6 +89178,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -88530,7 +89283,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -88540,7 +89293,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e271abc87acca1f4f82f143b202cd43e, type: 2}
+  - {fileID: 2100000, guid: 258daec55baea824086e10c3cf358916, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88672,6 +89425,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1.3
   pullSpeed: 1
@@ -88833,7 +89587,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -88843,8 +89597,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c363c42fdc801434fba68cf095c41916, type: 2}
-  - {fileID: -4731070306062222181, guid: 5afb81449138f214faa2c7d1ff2581c5, type: 3}
+  - {fileID: 2100000, guid: dde5b75d12d35d34d9601d153e3650a2, type: 2}
+  - {fileID: 2100000, guid: 2bed1f007f6b49745822d4d23ff7880a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88874,7 +89628,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2694171480961421560}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -89010,6 +89764,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -89136,6 +89891,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1.3
   pullSpeed: 1
@@ -89615,6 +90371,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -90041,6 +90798,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1
@@ -90217,7 +90975,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3480021417556651686}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -90290,6 +91048,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  lightning: 1
   speed: 5
   minGapTime: 2
   maxGapTime: 5
@@ -90990,6 +91749,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  lightning: 1
   speed: 6
   minGapTime: 3
   maxGapTime: 6
@@ -91127,6 +91887,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 0
   pullSpeed: 3
@@ -91456,6 +92217,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 0
   dis: 1
   pullSpeed: 1
@@ -91646,7 +92408,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6482995122274541827}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -91845,7 +92607,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4202090991086228961}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -91918,6 +92680,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  lightning: 1
   speed: 3
   minGapTime: 4
   maxGapTime: 6
@@ -92184,6 +92947,7 @@ MonoBehaviour:
   doorSound_Close: {fileID: 0}
   otherOneDoor: {fileID: 0}
   otherDoorCollider: {fileID: 0}
+  portal: {fileID: 0}
   isCabinetDoor: 1
   dis: 2.6
   pullSpeed: 1.2
@@ -92334,7 +93098,7 @@ GameObject:
   - component: {fileID: 3604595100494037112}
   - component: {fileID: 2086845501371436199}
   - component: {fileID: 2134780995608652637}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: handrail.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92716,7 +93480,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6225858044407351981}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0

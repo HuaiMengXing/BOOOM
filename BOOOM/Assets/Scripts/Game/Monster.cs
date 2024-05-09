@@ -34,26 +34,31 @@ public class Monster : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Start()
+    {      
+        gameObject.SetActive(false);
+    }
+    private void OnEnable()
     {
-        animator = GetComponent<Animator>();
-        agent = GetComponent<NavMeshAgent>();
         agent.speed = walkSpeed;
-        if(patorlSound != null)
+        if (patorlSound != null)
         {
             _audio.clip = patorlSound;
             _audio.Play();
         }
-            
+
         player = Player.Instance;
-        agent.SetDestination(patorlPos[Random.Range(0,patorlPos.Length)].position);//开局随机巡逻一个位置
         walkTime = 0;
+        agent.SetDestination(patorlPos[Random.Range(0, patorlPos.Length)].position);//开局随机巡逻一个位置
     }
 
     void Update()
     {
+        muiscMute();
         if (Time.timeScale == 0)
         {           
             closeSound = true;
@@ -89,7 +94,7 @@ public class Monster : MonoBehaviour
             {
                 disPlayerMonster = Vector3.Distance(player.transform.position, transform.position);
                 find = !Physics.Raycast(transform.position, player.transform.position - transform.position, disPlayerMonster, ~(1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("NO")));
-                if (disPlayerMonster < 6f || (disPlayerMonster < 10f && find)  || (disPlayerMonster < 18f && find &&
+                if (disPlayerMonster < 6f || (disPlayerMonster < 10f && find)  || (disPlayerMonster < 23f && find &&
                     Vector3.Angle(player.transform.position - transform.position, transform.forward) < 40f))//靠近，或者在前方
                 {
                     agent.isStopped = false;
@@ -114,7 +119,7 @@ public class Monster : MonoBehaviour
             if (!agent.pathPending && agent.remainingDistance < agent.stoppingDistance)//判断是否到达目的地
             {             
                 agent.SetDestination(patorlPos[Random.Range(0, patorlPos.Length)].position);//再随机巡逻一个位置
-                print(patorlPos[Random.Range(0, patorlPos.Length)].position);
+                //print(patorlPos[Random.Range(0, patorlPos.Length)].position);
             }
             else //没有到达目的地
             {
@@ -140,7 +145,7 @@ public class Monster : MonoBehaviour
         }
         else if(!player.death)        //发现玩家逻辑
         {
-            if(Vector3.Distance(player.transform.position, transform.position) > 25f || player.hideing || Mathf.Abs(Player.Instance.transform.position.y - transform.position.y) > 4f)//逃了或者藏起来了
+            if(Vector3.Distance(player.transform.position, transform.position) > 27f || player.hideing || Mathf.Abs(Player.Instance.transform.position.y - transform.position.y) > 4f)//逃了或者藏起来了
             {
                 if (patorlSound != null)
                 {
@@ -185,5 +190,35 @@ public class Monster : MonoBehaviour
                 }
             }          
         }                
+    }
+
+    void muiscMute()
+    {
+        if(Mathf.Abs(Player.Instance.transform.position.y - transform.position.y) < 3.5f)//同层
+        {
+            if(_audio.volume < 1f)
+            {
+                _audio.volume += Time.deltaTime;
+                _audioFirst.volume += Time.deltaTime;
+                if(_audio.volume >= 1f)
+                {
+                    _audio.volume = 1f;
+                    _audioFirst.volume = 1f;
+                }
+            }
+                
+        }else
+        {
+            if (_audio.volume > 0.3f)
+            {
+                _audio.volume -= Time.deltaTime;
+                _audioFirst.volume -= Time.deltaTime;
+                if (_audio.volume <= 0.3f)
+                {
+                    _audio.volume = 0.3f;
+                    _audioFirst.volume = 0.3f;
+                }
+            }
+        }
     }
 }

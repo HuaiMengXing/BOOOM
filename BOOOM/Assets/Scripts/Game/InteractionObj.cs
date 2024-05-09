@@ -32,6 +32,7 @@ public class InteractionObj : MonoBehaviour
     [Header("双开门关联")]
     public GameObject otherOneDoor;
     public BoxCollider otherDoorCollider;
+    public OcclusionPortal portal;
     [Header("柜门")]
     public bool isCabinetDoor = false;
 
@@ -91,6 +92,7 @@ public class InteractionObj : MonoBehaviour
             
 
         outline = gameObject.GetComponent<Outline>();
+        portal = GetComponentInParent<OcclusionPortal>();
 
         if (randomObj)
             randomObjPos();
@@ -252,6 +254,7 @@ public class InteractionObj : MonoBehaviour
                 otherOneDoor.transform.rotation = Quaternion.Lerp(otherDoorQuaternion, otherNewdoorQ, time);
                 if (time >= 1)
                 {
+                    portal.open = false;//窗口遮挡剔除开启
                     door = false;
                     time = 0;
                     transform.rotation = newdoorQ;
@@ -268,6 +271,8 @@ public class InteractionObj : MonoBehaviour
             }
             else
             {
+                if (portal.open == false)//窗口遮挡剔除关闭
+                    portal.open = true;
                 transform.rotation = Quaternion.Lerp(newdoorQ, doorQuaternion, time);
                 otherOneDoor.transform.rotation = Quaternion.Lerp(otherNewdoorQ, otherDoorQuaternion, time);
                 if (time >= 1)
