@@ -20,6 +20,7 @@ public class CameraMove : MonoBehaviour
     public float floatAmount = 0.1f;
     [Header("手电筒")]
     public GameObject flashLight;
+    public float flashLightDis = 30f;
     [Header("角色死亡")]
     public GameObject deathEvent;
 
@@ -39,9 +40,13 @@ public class CameraMove : MonoBehaviour
     private float posY;
     private float time;
     private AudioSource lightSound;
+    private Light light;
+    private float lightIntensity;
     private void Start()
     {
         lightSound = GetComponent<AudioSource>();
+        light = flashLight.GetComponent<Light>();
+        lightIntensity = light.intensity;
         offsetPos_Y = offsetPos.y;
         player = Player.Instance;
         posY = 0;
@@ -66,6 +71,15 @@ public class CameraMove : MonoBehaviour
         InteractionEvent();
 
         //手电筒
+        if (flashLight.activeInHierarchy)
+        {
+            //解决过渡曝光的问题
+            Physics.Raycast(flashLight.transform.position,flashLight.transform.forward , out hitInfo,30f);
+            var dis = Mathf.Clamp(Vector3.Distance(transform.position, hitInfo.point),3f,flashLightDis);
+            //Debug.Log(dis);
+            var inter = lightIntensity * (dis/flashLightDis);
+            light.intensity = Mathf.Lerp(light.intensity, inter, Time.deltaTime * 2f);
+        }
         if(Input.GetMouseButtonDown(1))
         {
             lightSound.Play();

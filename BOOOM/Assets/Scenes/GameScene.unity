@@ -37165,6 +37165,18 @@ PrefabInstance:
       value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1942683331, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942683331, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942683331, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942683331, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
       propertyPath: m_Intensity
       value: 1.5
       objectReference: {fileID: 0}
@@ -37280,6 +37292,10 @@ PrefabInstance:
       propertyPath: Interaction
       value: 
       objectReference: {fileID: 1421515652}
+    - target: {fileID: 296162498361517044, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
+      propertyPath: flashLightDis
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 296162498361517045, guid: e1c210b9b7c879f4880fc62ce6ddf1e0, type: 3}
       propertyPath: m_Enabled
       value: 1
